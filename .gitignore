@@ -46,3 +46,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 known_issues_to_fix.txt
+
+.idea
+*.iml
