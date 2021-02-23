@@ -24,9 +24,9 @@ describe('HomeComponent', () => {
   });
 
   it('should render welcome message', () => {
-    const fixture = TestBed.createComponent(HomeComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
+    const testfixture = TestBed.createComponent(HomeComponent);
+    testfixture.detectChanges();
+    const compiled = testfixture.nativeElement;
     expect(compiled.querySelector('.container h2').textContent).toContain('Welcome to my V:TM page!');
   });
 });

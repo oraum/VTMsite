@@ -12,13 +12,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import { ClanSelectionComponent } from './clan-selection/clan-selection.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CharacterCreatorComponent
+    CharacterCreatorComponent,
+    ClanSelectionComponent
   ],
   imports: [
     BrowserModule,

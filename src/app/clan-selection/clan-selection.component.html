@@ -1,0 +1,30 @@
+<form>
+  <mat-form-field>
+    <mat-label>Clan Filter</mat-label>
+    <mat-select #clanFilter [value]="clanService.clanFilters[0]">
+      <mat-option *ngFor="let filter of clanService.clanFilters" [value]="filter">
+        {{filter}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Clan/Bloodline</mat-label>
+    <mat-select #clanSelect [(value)]="clan">
+      <mat-option *ngFor="let clan of clanService.getFilteredClans(clanFilter.value)" [value]="clan">
+        {{clan.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<div *ngIf="clan" class="clan-info">
+  <div>
+    <img [src]='"assets/clan-images/"+clan.name.toLowerCase()+".png"' class="clan-logo">
+  </div>
+  <div>
+    <h1 class="mat-h1">{{clan.name}}</h1>
+    <div>{{clanService.getDescription(clan.name)}}</div>
+    <b>Disciplines: </b><span>{{clan.disciplines.join(", ")}}</span>
+  </div>
+</div>
+

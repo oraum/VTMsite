@@ -1,0 +1,20 @@
+.clan-logo {
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+  filter: invert(1);
+}
+
+form mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.clan-info {
+  max-width: 752px;
+  display: flex;
+  flex-direction: row;
+
+  & > div {
+    margin: 5px 16px;
+  }
+}
