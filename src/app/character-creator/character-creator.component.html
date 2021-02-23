@@ -1,0 +1,60 @@
+<h3>Character Creator</h3>
+
+<form>
+  <mat-form-field>
+    <mat-label>Player</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Chronicle</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Concept</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Demeanor</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nature</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let nature of charCreatorService.natureDemeanorList" [value]="nature">
+        {{nature}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Demeanor</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let demeanor of charCreatorService.natureDemeanorList" [value]="demeanor">
+        {{demeanor}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sire</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Generation</mat-label>
+    <mat-select [value]="getDefaultGeneration()">
+      <mat-option *ngFor="let generation of charCreatorService.generations" [value]="generation">
+        {{generation}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
