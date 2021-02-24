@@ -6,7 +6,8 @@ import {CharacterCreatorComponent} from './character-creator/character-creator.c
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'creator', component: CharacterCreatorComponent},
-  { path: '',   redirectTo: '/home', pathMatch: 'full' }
+  // { path: '',   redirectTo: '/home', pathMatch: 'full' },
+  { path: '**',   redirectTo: '/home' }
 ];
 
 @NgModule({
