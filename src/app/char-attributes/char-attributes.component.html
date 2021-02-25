@@ -1,0 +1,7 @@
+<h2 class="mat-h2">Attributes</h2>
+
+<div class="attributes">
+  <attribute-group (priorityChanged)="priorityChanged(group, $event)" *ngFor="let group of attributeGroups"
+                   [attributes]="group.attributes" [groupName]="group.name"
+                   [priority]="group.priority"></attribute-group>
+</div>

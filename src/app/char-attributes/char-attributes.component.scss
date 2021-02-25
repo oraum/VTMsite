@@ -1,0 +1,8 @@
+.attributes {
+  display: flex;
+  flex-wrap: wrap;
+
+  & attribute-group {
+    flex: 1 0 auto;
+  }
+}

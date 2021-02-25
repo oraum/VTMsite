@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import { ClanSelectionComponent } from './clan-selection/clan-selection.component';
+import {AttributeGroupComponent, CharAttributesComponent, PointSelectionComponent} from './char-attributes/char-attributes.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -20,7 +22,10 @@ import { ClanSelectionComponent } from './clan-selection/clan-selection.componen
     AppComponent,
     HomeComponent,
     CharacterCreatorComponent,
-    ClanSelectionComponent
+    ClanSelectionComponent,
+    CharAttributesComponent,
+    AttributeGroupComponent,
+    PointSelectionComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,8 @@ import { ClanSelectionComponent } from './clan-selection/clan-selection.componen
     MatFormFieldModule,
     MatInputModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
