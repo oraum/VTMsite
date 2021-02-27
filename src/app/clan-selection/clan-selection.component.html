@@ -9,7 +9,7 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Clan/Bloodline</mat-label>
-    <mat-select #clanSelect [(value)]="clan">
+    <mat-select #clanSelect (valueChange)="clanChanged.emit($event.name)" [value]="clan">
       <mat-option *ngFor="let clan of clanService.getFilteredClans(clanFilter.value)" [value]="clan">
         {{clan.name}}
       </mat-option>

@@ -90,6 +90,7 @@ interface Attribute {
       flex-grow: 1;
       align-items: center;
     }
+
     .title {
       display: flex;
       justify-content: space-between;
@@ -97,7 +98,7 @@ interface Attribute {
     }
   `]
 })
-export class AttributeGroupComponent {
+export class AttributeGroupComponent implements OnChanges {
 
   @Input() groupName: string | undefined;
   @Input() priority: string | undefined;
@@ -109,7 +110,22 @@ export class AttributeGroupComponent {
 
   prioritySelectionChanged(priority: string) {
     this.priorityChanged.emit(priority);
+    this.updateAvailablePoints(priority);
+  }
 
+  pointsChanged(attribute: Attribute, points: number) {
+    let oldPoints = attribute.points;
+    attribute.points = points;
+    this.availablePoints += (oldPoints - points);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('priority' in changes) {
+      this.updateAvailablePoints(changes['priority'].currentValue);
+    }
+  }
+
+  private updateAvailablePoints(priority: string) {
     switch (priority) {
       case 'Primary':
         this.availablePoints = 7;
@@ -124,12 +140,6 @@ export class AttributeGroupComponent {
         this.availablePoints = 0;
     }
     this.attributes?.forEach(value => value.points = 0);
-  }
-
-  pointsChanged(attribute: Attribute, points: number) {
-    let oldPoints = attribute.points;
-    attribute.points = points;
-    this.availablePoints += (oldPoints - points);
   }
 }
 
@@ -167,7 +177,6 @@ export class PointSelectionComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if ('pointsGiven' in changes) {
       this.points = this.pointsGiven + this.basePoints;
     }
