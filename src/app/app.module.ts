@@ -13,9 +13,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {ClanSelectionComponent} from './clan-selection/clan-selection.component';
-import {AttributeGroupComponent, CharAttributesComponent, PointSelectionComponent} from './char-attributes/char-attributes.component';
+import {CharAttributesComponent} from './char-attributes/char-attributes.component';
 import {MatIconModule} from '@angular/material/icon';
 import {ReactiveFormsModule} from '@angular/forms';
+import {PointSelectionComponent} from './point-selection/point-selection.component';
+import {PointSelectionGroupComponent} from './point-selection-group/point-selection-group.component';
+import {PrioritizedPointSelectionGroupComponent} from './prioritized-point-selection-group/prioritized-point-selection-group.component';
 
 
 @NgModule({
@@ -25,8 +28,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     CharacterCreatorComponent,
     ClanSelectionComponent,
     CharAttributesComponent,
-    AttributeGroupComponent,
-    PointSelectionComponent
+    PointSelectionComponent,
+    PointSelectionGroupComponent,
+    PrioritizedPointSelectionGroupComponent
   ],
   imports: [
     BrowserModule,
