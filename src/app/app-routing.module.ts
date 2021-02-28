@@ -1,13 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {CharacterCreatorComponent} from './character-creator/character-creator.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'creator', component: CharacterCreatorComponent},
+  {path: 'creator', loadChildren: () => import('./creator/creator.module').then(m => m.CreatorModule)},
   // { path: '',   redirectTo: '/home', pathMatch: 'full' },
-  { path: '**',   redirectTo: '/home' }
+  {path: '**', redirectTo: '/home'}
 ];
 
 @NgModule({
