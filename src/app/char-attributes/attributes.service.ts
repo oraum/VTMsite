@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
 import {NamedPointsGroup, Priority} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
+import {PointsService} from '../points.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AttributesService {
-  priorities: Priority[] = [{name: 'Primary', availablePoints: 7}, {name: 'Secondary', availablePoints: 5}, {
-    name: 'Tertiary',
-    availablePoints: 3
-  }];
-  defaultAttributeGroups: NamedPointsGroup[] = [
+export class AttributesService extends PointsService {
+  priorities: Priority[] = [
+    {name: 'Primary', availablePoints: 7},
+    {name: 'Secondary', availablePoints: 5},
+    {name: 'Tertiary', availablePoints: 3}];
+  defaultGroups: NamedPointsGroup[] = [
     {
       name: 'Physical',
       values: [{name: 'Strength', points: 0}, {name: 'Dexterity', points: 0}, {name: 'Stamina', points: 0}],
@@ -27,25 +28,4 @@ export class AttributesService {
     }
   ];
 
-  constructor() {
-  }
-
-  getAttributeGroups(savedAttributes: NamedPointsGroup[]): NamedPointsGroup[] {
-    let attributeGroups: NamedPointsGroup[] = JSON.parse(JSON.stringify(this.defaultAttributeGroups)); // deep copy
-
-    savedAttributes.forEach((savedGroup) => {
-      let group = attributeGroups.find(npg => npg.name === savedGroup.name);
-      if (group !== undefined) {
-        group.priority = savedGroup.priority;
-        savedGroup?.values.forEach(value => {
-          let val = group?.values.find(value1 => value1.name === value.name);
-          if (val !== undefined) {
-            val.points = value.points;
-          }
-        });
-
-      }
-    });
-    return attributeGroups;
-  }
 }

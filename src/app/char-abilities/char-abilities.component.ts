@@ -1,19 +1,20 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import {AttributesService} from './attributes.service';
 import {NamedPointsGroup} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
+import {AbilitiesService} from './abilities.service';
 
 @Component({
-  selector: 'app-char-attributes',
+  selector: 'app-char-abilities',
   template: `
-    <h2 class="mat-h2">Attributes</h2>
+    <h2 class="mat-h2">Abilities</h2>
 
-    <app-prioritized-point-selection-group [groups]="groups" [basePoints]="1"
+    <app-prioritized-point-selection-group [groups]="groups"
                                            [priorities]="attributeService.priorities"
                                            (pointsChanged)="attributesChanged.emit($event)"></app-prioritized-point-selection-group>
   `,
+  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CharAttributesComponent implements OnChanges {
+export class CharAbilitiesComponent implements OnChanges {
 
   @Input()
   savedAttributes: NamedPointsGroup[] | undefined = [];
@@ -23,7 +24,7 @@ export class CharAttributesComponent implements OnChanges {
 
   groups: NamedPointsGroup[];
 
-  constructor(public attributeService: AttributesService) {
+  constructor(public attributeService: AbilitiesService) {
     this.groups = this.attributeService.defaultGroups;
   }
 
@@ -32,5 +33,5 @@ export class CharAttributesComponent implements OnChanges {
       this.groups = this.attributeService.getGroups(this.savedAttributes);
     }
   }
-}
 
+}

@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-point-selection-group',
   template: `
     <div class="rows">
-      <div *ngFor="let attribute of attributes">
+      <div *ngFor="let attribute of attributes; trackBy: npTrackFn ">
         <span class="attribute-name">{{attribute.name}}</span>
-        <app-point-selection [basePoints]="1" [maxPoints]="5" [availablePoints]="availablePoints" [pointsGiven]="attribute.points"
+        <app-point-selection [basePoints]="basePoints" [maxPoints]="5" [availablePoints]="availablePoints" [pointsGiven]="attribute.points"
                              (pointsChanged)="ptsChanged(attribute,$event)"></app-point-selection>
       </div>
     </div>
@@ -26,12 +26,15 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       flex-grow: 1;
       align-items: center;
     }
-  `]
+  `],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PointSelectionGroupComponent {
   @Input() attributes: NamedPoints[] | undefined;
 
   @Input() availablePoints = -1;
+
+  @Input() basePoints = 0;
 
   @Output() pointsChanged = new EventEmitter<NamedPoints>();
 
@@ -46,6 +49,9 @@ export class PointSelectionGroupComponent {
     this.pointsChanged.emit(attribute);
   }
 
+  npTrackFn(index: number, item: NamedPoints) {
+    return `${item.name}${item.points}`;
+  }
 }
 
 

@@ -6,7 +6,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnIn
 @Component({
   selector: 'app-point-selection',
   template: `
-    <button mat-icon-button *ngFor="let i of pointArray" (click)="onClick(i+1)">
+    <button mat-icon-button *ngFor="let i of pointArray" (click)="onClick(i+1); $event.stopPropagation()">
       <mat-icon>
         {{showIcon(i)}}
       </mat-icon>
@@ -71,14 +71,19 @@ export class PointSelectionComponent implements OnInit, OnChanges {
       }
     } else {
       //decrease
-      if (points >= this.basePoints) {
+      if (points > this.basePoints) {
+        if (points === this.points && points === 1) {
+          // special case to deselect the only point given
+          this.points = this.basePoints;
+        }
         this.points = points;
       } else {
+        // tried to set less than base points which should not be possible, use basePoints instead
         this.points = this.basePoints;
       }
     }
     // publish new points
-    this.pointsChanged.emit(points - this.basePoints);
+    this.pointsChanged.emit(this.points - this.basePoints);
   }
 
 }

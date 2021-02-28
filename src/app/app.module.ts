@@ -19,6 +19,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {PointSelectionComponent} from './point-selection/point-selection.component';
 import {PointSelectionGroupComponent} from './point-selection-group/point-selection-group.component';
 import {PrioritizedPointSelectionGroupComponent} from './prioritized-point-selection-group/prioritized-point-selection-group.component';
+import {CharAbilitiesComponent} from './char-abilities/char-abilities.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {PrioritizedPointSelectionGroupComponent} from './prioritized-point-selec
     CharAttributesComponent,
     PointSelectionComponent,
     PointSelectionGroupComponent,
-    PrioritizedPointSelectionGroupComponent
+    PrioritizedPointSelectionGroupComponent,
+    CharAbilitiesComponent
   ],
   imports: [
     BrowserModule,

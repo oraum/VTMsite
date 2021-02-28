@@ -4,7 +4,7 @@ import {NamedPoints} from '../point-selection-group/point-selection-group.compon
 @Component({
   selector: 'app-prioritized-point-selection-group',
   template: `
-    <div *ngFor="let group of groups" class="group">
+    <div *ngFor="let group of groups; trackBy:groupTrackFn" class="group">
       <div class="title">
         <span>{{group.name}}</span>
         <span *ngIf="getAvailablePoints(group)>=0">{{getAvailablePoints(group)}}</span>
@@ -20,7 +20,7 @@ import {NamedPoints} from '../point-selection-group/point-selection-group.compon
         </mat-select>
       </mat-form-field>
 
-      <app-point-selection-group [attributes]="group.values" [availablePoints]="getAvailablePoints(group)"
+      <app-point-selection-group [attributes]="group.values" [availablePoints]="getAvailablePoints(group)" [basePoints]="basePoints"
                                  (pointsChanged)="ptsChanged($event, group)"></app-point-selection-group>
     </div>
   `,
@@ -50,6 +50,8 @@ export class PrioritizedPointSelectionGroupComponent {
 
   @Input()
   priorities: Priority[] = [];
+
+  @Input() basePoints = 0;
 
   @Output()
   pointsChanged = new EventEmitter<NamedPointsGroup[]>();
@@ -83,6 +85,10 @@ export class PrioritizedPointSelectionGroupComponent {
       return priority.availablePoints - sum;
     }
     return 0;
+  }
+
+  groupTrackFn(index: number, item: NamedPointsGroup) {
+    return `${item.name}`;
   }
 }
 

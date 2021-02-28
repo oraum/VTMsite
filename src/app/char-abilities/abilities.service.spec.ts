@@ -1,13 +1,13 @@
 import {TestBed} from '@angular/core/testing';
 
-import {AttributesService} from './attributes.service';
+import {AbilitiesService} from './abilities.service';
 
-describe('AttributesService', () => {
-  let service: AttributesService;
+describe('AbilitiesService', () => {
+  let service: AbilitiesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AttributesService);
+    service = TestBed.inject(AbilitiesService);
   });
 
   it('should be created', () => {
@@ -19,9 +19,9 @@ describe('AttributesService', () => {
     expect(service.priorities).toHaveSize(3);
   });
 
-  it('should contain default attributes', () => {
+  it('should contain default abilities', () => {
     expect(service.defaultGroups).toBeTruthy();
     expect(service.defaultGroups).toHaveSize(3);
-    expect(service.defaultGroups[0].values).toHaveSize(3);
+    expect(service.defaultGroups[0].values).toHaveSize(10);
   });
 });

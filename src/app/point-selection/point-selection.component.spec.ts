@@ -1,6 +1,8 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PointSelectionComponent} from './point-selection.component';
+import {MatIcon} from '@angular/material/icon';
+import {MatIconTestingModule} from '@angular/material/icon/testing';
 
 describe('PointSelectionComponent', () => {
   let component: PointSelectionComponent;
@@ -8,7 +10,8 @@ describe('PointSelectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PointSelectionComponent]
+      declarations: [PointSelectionComponent, MatIcon],
+      imports: [MatIconTestingModule]
     })
       .compileComponents();
   });

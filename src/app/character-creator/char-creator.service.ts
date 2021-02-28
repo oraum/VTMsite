@@ -63,4 +63,5 @@ export interface Character {
   generation?: string | undefined;
   clanBloodline?: string | undefined;
   attributes?: NamedPointsGroup[];
+  abilities?: NamedPointsGroup[];
 }

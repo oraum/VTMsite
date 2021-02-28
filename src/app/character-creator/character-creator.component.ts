@@ -47,4 +47,9 @@ export class CharacterCreatorComponent {
     this.character.attributes = groups;
     this.charCreatorService.character = this.character;
   }
+
+  updateAbilities(groups: NamedPointsGroup[]) {
+    this.character.abilities = groups;
+    this.charCreatorService.character = this.character;
+  }
 }

@@ -1,6 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CharAttributesComponent } from './char-attributes.component';
+import {CharAttributesComponent} from './char-attributes.component';
+import {PrioritizedPointSelectionGroupComponent} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatOptionModule} from '@angular/material/core';
+import {PointSelectionComponent} from '../point-selection/point-selection.component';
+import {PointSelectionGroupComponent} from '../point-selection-group/point-selection-group.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatIconTestingModule} from '@angular/material/icon/testing';
+import {MatIcon} from '@angular/material/icon';
 
 describe('CharAttributesComponent', () => {
   let component: CharAttributesComponent;
@@ -8,7 +18,8 @@ describe('CharAttributesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CharAttributesComponent ]
+      declarations: [CharAttributesComponent, PrioritizedPointSelectionGroupComponent, PointSelectionComponent, PointSelectionGroupComponent, MatIcon],
+      imports: [MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, NoopAnimationsModule, MatIconTestingModule]
     })
     .compileComponents();
   });
