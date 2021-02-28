@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Character, CharCreatorService} from './char-creator.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
+import {NamedPointsGroup} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
 
 @Component({
   selector: 'app-character-creator',
@@ -39,6 +40,11 @@ export class CharacterCreatorComponent {
 
   updateClan(clan: string) {
     this.character.clanBloodline = clan;
+    this.charCreatorService.character = this.character;
+  }
+
+  updateAttributes(groups: NamedPointsGroup[]) {
+    this.character.attributes = groups;
     this.charCreatorService.character = this.character;
   }
 }

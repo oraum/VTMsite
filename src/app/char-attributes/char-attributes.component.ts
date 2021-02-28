@@ -1,40 +1,36 @@
-import {Component} from '@angular/core';
-import {NamedPointsGroup, Priority} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {AttributesService} from './attributes.service';
+import {NamedPointsGroup} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
 
 @Component({
   selector: 'app-char-attributes',
   template: `
     <h2 class="mat-h2">Attributes</h2>
 
-    <app-prioritized-point-selection-group [groups]="attributeGroups"
-                                           [priorities]="priorites"></app-prioritized-point-selection-group>
+    <app-prioritized-point-selection-group [groups]="groups"
+                                           [priorities]="attributeService.priorities"
+                                           (pointsChanged)="attributesChanged.emit($event)"></app-prioritized-point-selection-group>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CharAttributesComponent {
+export class CharAttributesComponent implements OnChanges {
 
-  priorites: Priority[] = [{name: 'Primary', availablePoints: 7}, {name: 'Secondary', availablePoints: 5}, {
-    name: 'Tertiary',
-    availablePoints: 3
-  }];
-  attributeGroups: NamedPointsGroup[] = [
-    {
-      name: 'Physical',
-      values: [{name: 'Strength', points: 0}, {name: 'Dexterity', points: 0}, {name: 'Stamina', points: 0}],
-      priority: undefined
-    },
-    {
-      name: 'Social',
-      values: [{name: 'Charisma', points: 0}, {name: 'Manipulation', points: 0}, {name: 'Appearance', points: 0}],
-      priority: undefined
-    },
-    {
-      name: 'Mental',
-      values: [{name: 'Perception', points: 0}, {name: 'Intelligence', points: 0}, {name: 'Wits', points: 0}],
-      priority: undefined
+  @Input()
+  savedAttributes: NamedPointsGroup[] | undefined = [];
+
+  @Output()
+  attributesChanged = new EventEmitter<NamedPointsGroup[]>();
+
+  groups: NamedPointsGroup[];
+
+  constructor(public attributeService: AttributesService) {
+    this.groups = this.attributeService.defaultAttributeGroups;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.savedAttributes) {
+      this.groups = this.attributeService.getAttributeGroups(this.savedAttributes);
     }
-  ];
-
-  constructor() {
   }
 }
 

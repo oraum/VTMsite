@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {NamedPoints} from '../point-selection-group/point-selection-group.component';
 
 @Component({
@@ -21,7 +21,7 @@ import {NamedPoints} from '../point-selection-group/point-selection-group.compon
       </mat-form-field>
 
       <app-point-selection-group [attributes]="group.values" [availablePoints]="getAvailablePoints(group)"
-                                 (pointsChanged)="pointsChanged($event, group)"></app-point-selection-group>
+                                 (pointsChanged)="ptsChanged($event, group)"></app-point-selection-group>
     </div>
   `,
   styles: [`
@@ -51,6 +51,9 @@ export class PrioritizedPointSelectionGroupComponent {
   @Input()
   priorities: Priority[] = [];
 
+  @Output()
+  pointsChanged = new EventEmitter<NamedPointsGroup[]>();
+
   constructor() {
   }
 
@@ -60,11 +63,12 @@ export class PrioritizedPointSelectionGroupComponent {
     group.values?.forEach(value => value.points = 0);
   }
 
-  pointsChanged(attribute: NamedPoints, group: NamedPointsGroup) {
+  ptsChanged(attribute: NamedPoints, group: NamedPointsGroup) {
     let value = group.values.find(value => value.name === attribute.name);
     if (value !== undefined) {
       value.points = attribute.points;
     }
+    this.pointsChanged.emit(this.groups);
   }
 
   groupPriority(group: NamedPointsGroup): Priority | undefined {

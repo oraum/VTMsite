@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {NamedPointsGroup} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
 
 @Injectable({
   providedIn: 'root'
@@ -61,4 +62,5 @@ export interface Character {
   sire?: string | undefined;
   generation?: string | undefined;
   clanBloodline?: string | undefined;
+  attributes?: NamedPointsGroup[];
 }

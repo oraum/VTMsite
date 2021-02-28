@@ -58,5 +58,6 @@
   <app-clan-selection (clanChanged)="updateClan($event)" [clanName]="character.clanBloodline"></app-clan-selection>
 </div>
 <div>
-<app-char-attributes></app-char-attributes>
+<app-char-attributes (attributesChanged)="updateAttributes($event)"
+                     [savedAttributes]="character.attributes"></app-char-attributes>
 </div>
