@@ -28,12 +28,15 @@ import {NamedPoints} from '../point-selection-group/point-selection-group.compon
     :host {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
     }
 
     .group {
       display: flex;
       flex-direction: column;
       padding: 4px;
+      flex-grow: 1;
+      margin-bottom: 32px;
     }
 
     .title {

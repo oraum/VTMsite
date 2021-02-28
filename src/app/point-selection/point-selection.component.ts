@@ -75,8 +75,9 @@ export class PointSelectionComponent implements OnInit, OnChanges {
         if (points === this.points && points === 1) {
           // special case to deselect the only point given
           this.points = this.basePoints;
+        } else {
+          this.points = points;
         }
-        this.points = points;
       } else {
         // tried to set less than base points which should not be possible, use basePoints instead
         this.points = this.basePoints;
