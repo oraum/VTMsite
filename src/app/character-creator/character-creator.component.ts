@@ -38,17 +38,17 @@ export class CharacterCreatorComponent {
     return this.charCreatorService.generations[10];
   }
 
-  updateClan(clan: string) {
+  updateClan(clan: string): void {
     this.character.clanBloodline = clan;
     this.charCreatorService.character = this.character;
   }
 
-  updateAttributes(groups: NamedPointsGroup[]) {
+  updateAttributes(groups: NamedPointsGroup[]): void {
     this.character.attributes = groups;
     this.charCreatorService.character = this.character;
   }
 
-  updateAbilities(groups: NamedPointsGroup[]) {
+  updateAbilities(groups: NamedPointsGroup[]): void {
     this.character.abilities = groups;
     this.charCreatorService.character = this.character;
   }

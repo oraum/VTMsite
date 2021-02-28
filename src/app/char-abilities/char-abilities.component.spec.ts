@@ -15,7 +15,8 @@ describe('CharAbilitiesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CharAbilitiesComponent, PrioritizedPointSelectionGroupComponent, PointSelectionGroupComponent, PointSelectionComponent],
+      declarations: [CharAbilitiesComponent, PrioritizedPointSelectionGroupComponent, PointSelectionGroupComponent,
+        PointSelectionComponent],
       imports: [MatFormFieldModule, MatSelectModule, NoopAnimationsModule, MatIconModule]
     })
       .compileComponents();

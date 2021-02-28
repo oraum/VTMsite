@@ -39,7 +39,7 @@ export class CharCreatorService {
   }
 
   private static loadCharacter(): Character {
-    let item = localStorage.getItem('character');
+    const item = localStorage.getItem('character');
     if (item !== null) {
       return JSON.parse(item);
     } else {
@@ -47,7 +47,7 @@ export class CharCreatorService {
     }
   }
 
-  saveCharacter(char: Character) {
+  saveCharacter(char: Character): void {
     localStorage.setItem('character', JSON.stringify(char));
   }
 }

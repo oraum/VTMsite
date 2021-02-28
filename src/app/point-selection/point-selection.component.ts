@@ -19,28 +19,28 @@ export class PointSelectionComponent implements OnInit, OnChanges {
   /**
    * points always given to the value without spending additional points
    */
-  @Input() basePoints: number = 0;
+  @Input() basePoints = 0;
   /**
    * maximum number of points the value can have (incl. basePoints)
    */
-  @Input() maxPoints: number = 5;
+  @Input() maxPoints = 5;
   /**
    * number of points which can be spent
    */
-  @Input() availablePoints: number = 0;
+  @Input() availablePoints = 0;
   /**
    * number of points spent on this value
    */
-  @Input() pointsGiven: number = 0;
+  @Input() pointsGiven = 0;
   public pointArray: number[] = [];
-  public points: number = 0;
+  public points = 0;
 
   /**
    * Event with updated value of points spent on value
    */
   @Output() pointsChanged = new EventEmitter<number>();
 
-  ngOnInit() {
+  ngOnInit(): void {
     for (let index = 0; index < this.maxPoints; index++) {
       this.pointArray.push(index);
     }
@@ -52,7 +52,7 @@ export class PointSelectionComponent implements OnInit, OnChanges {
     }
   }
 
-  showIcon(index: number) {
+  showIcon(index: number): string {
     if (this.points >= index + 1) {
       return 'radio_button_checked';
     } else {
@@ -60,9 +60,9 @@ export class PointSelectionComponent implements OnInit, OnChanges {
     }
   }
 
-  onClick(points: number) {
+  onClick(points: number): void {
     if (points > this.points) {
-      //increase
+      // increase
       if (points - this.points <= this.availablePoints) {
         this.points = points;
       } else {
@@ -70,7 +70,7 @@ export class PointSelectionComponent implements OnInit, OnChanges {
         return;
       }
     } else {
-      //decrease
+      // decrease
       if (points > this.basePoints) {
         if (points === this.points && points === 1) {
           // special case to deselect the only point given

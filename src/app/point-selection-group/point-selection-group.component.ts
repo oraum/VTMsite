@@ -42,14 +42,14 @@ export class PointSelectionGroupComponent {
   }
 
 
-  ptsChanged(attribute: NamedPoints, points: number) {
-    let oldPoints = attribute.points;
+  ptsChanged(attribute: NamedPoints, points: number): void {
+    const oldPoints = attribute.points;
     attribute.points = points;
     this.availablePoints += (oldPoints - points);
     this.pointsChanged.emit(attribute);
   }
 
-  npTrackFn(index: number, item: NamedPoints) {
+  npTrackFn(index: number, item: NamedPoints): string {
     return `${item.name}${item.points}`;
   }
 }
@@ -57,5 +57,5 @@ export class PointSelectionGroupComponent {
 
 export interface NamedPoints {
   name: string;
-  points: number
+  points: number;
 }

@@ -59,14 +59,14 @@ export class PrioritizedPointSelectionGroupComponent {
   constructor() {
   }
 
-  prioritySelectionChanged(priority: Priority, group: NamedPointsGroup) {
+  prioritySelectionChanged(priority: Priority, group: NamedPointsGroup): void {
     this.groups.filter(value => value.priority === priority.name).forEach(value => value.priority = undefined);
     group.priority = priority.name;
     group.values?.forEach(value => value.points = 0);
   }
 
-  ptsChanged(attribute: NamedPoints, group: NamedPointsGroup) {
-    let value = group.values.find(value => value.name === attribute.name);
+  ptsChanged(attribute: NamedPoints, group: NamedPointsGroup): void {
+    const value = group.values.find(val => val.name === attribute.name);
     if (value !== undefined) {
       value.points = attribute.points;
     }
@@ -74,28 +74,28 @@ export class PrioritizedPointSelectionGroupComponent {
   }
 
   groupPriority(group: NamedPointsGroup): Priority | undefined {
-    return this.priorities.find(value => value.name == group.priority);
+    return this.priorities.find(value => value.name === group.priority);
   }
 
   getAvailablePoints(group: NamedPointsGroup): number {
-    let priority = this.groupPriority(group);
+    const priority = this.groupPriority(group);
     if (priority !== undefined) {
-      let sum = group.values.map(value => value.points).reduce((previousValue, currentValue) => previousValue + currentValue);
+      const sum = group.values.map(value => value.points).reduce((previousValue, currentValue) => previousValue + currentValue);
 
       return priority.availablePoints - sum;
     }
     return 0;
   }
 
-  groupTrackFn(index: number, item: NamedPointsGroup) {
+  groupTrackFn(index: number, item: NamedPointsGroup): string {
     return `${item.name}`;
   }
 }
 
 export interface NamedPointsGroup {
   name: string;
-  values: NamedPoints[],
-  priority?: string | undefined
+  values: NamedPoints[];
+  priority?: string | undefined;
 }
 
 export interface Priority {

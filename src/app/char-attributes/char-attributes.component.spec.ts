@@ -18,10 +18,11 @@ describe('CharAttributesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CharAttributesComponent, PrioritizedPointSelectionGroupComponent, PointSelectionComponent, PointSelectionGroupComponent, MatIcon],
+      declarations: [CharAttributesComponent, PrioritizedPointSelectionGroupComponent, PointSelectionComponent,
+        PointSelectionGroupComponent, MatIcon],
       imports: [MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, NoopAnimationsModule, MatIconTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

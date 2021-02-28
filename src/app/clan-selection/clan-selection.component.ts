@@ -22,7 +22,7 @@ export class ClanSelectionComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('clanName' in changes) {
-      this.clan = this.clanService.clanList.find(clan => clan.name === changes['clanName'].currentValue);
+      this.clan = this.clanService.clanList.find(clan => clan.name === changes.clanName.currentValue);
     }
   }
 
