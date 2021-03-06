@@ -6,7 +6,7 @@ import {CharacterCreatorComponent} from '../character-creator/character-creator.
 import {ClanSelectionComponent} from '../clan-selection/clan-selection.component';
 import {CharAttributesComponent} from '../char-attributes/char-attributes.component';
 import {PointSelectionComponent} from '../point-selection/point-selection.component';
-import {PointSelectionGroupComponent} from '../point-selection-group/point-selection-group.component';
+import {FreetextValueInputComponent, PointSelectionGroupComponent} from '../point-selection-group/point-selection-group.component';
 import {PrioritizedPointSelectionGroupComponent} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
 import {CharAbilitiesComponent} from '../char-abilities/char-abilities.component';
 import {MatButtonModule} from '@angular/material/button';
@@ -28,7 +28,9 @@ import {PrioritySelectionComponent} from '../priority-selection/priority-selecti
     PointSelectionGroupComponent,
     PrioritizedPointSelectionGroupComponent,
     CharAbilitiesComponent,
-    PrioritySelectionComponent],
+    PrioritySelectionComponent,
+    FreetextValueInputComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

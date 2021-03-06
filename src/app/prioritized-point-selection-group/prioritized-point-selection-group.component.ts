@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {NamedPoints, NamedPointsGroup, PointsService, Priority} from '../points.service';
+import {NamedPointsGroup, PointsService, Priority} from '../points.service';
+import {FreeTextChangedEvent, PointsClickedEvent} from '../point-selection-group/point-selection-group.component';
 
 @Component({
   selector: 'app-prioritized-point-selection-group',
@@ -13,14 +14,8 @@ import {NamedPoints, NamedPointsGroup, PointsService, Priority} from '../points.
       <app-priority-selection [priorities]="priorities" [selectedPriority]="groupPriority(group)"
                               (priorityChanged)="priorityChanged({priority: $event,group: group})"></app-priority-selection>
 
-      <div class="rows" *ngIf="group">
-        <div *ngFor="let attribute of group.values; trackBy: npTrackFn ">
-          <span class="attribute-name">{{attribute.name}}</span>
-          <app-point-selection [points]="attribute.points"
-                               (pointsClicked)="pointsClicked({group:group, value:attribute, amount: $event})"
-          ></app-point-selection>
-        </div>
-      </div>
+      <app-point-selection-group [group]="group" (pointsClicked)="pointsClicked($event)"
+                                 (freeTextChanged)="changeFreeText($event)"></app-point-selection-group>
     </div>
   `,
   styles: [`
@@ -41,21 +36,6 @@ import {NamedPoints, NamedPointsGroup, PointsService, Priority} from '../points.
     .title {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-
-    .attribute-name {
-      flex-grow: 1;
-    }
-
-    .rows {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .rows > * {
-      display: flex;
-      flex-grow: 1;
       align-items: center;
     }
   `],
@@ -98,8 +78,15 @@ export class PrioritizedPointSelectionGroupComponent {
     return `${item.name}`;
   }
 
-  npTrackFn(index: number, item: NamedPoints): string {
-    return `${item.name}${item.points}`;
+  changeFreeText(event: FreeTextChangedEvent): void {
+    const group = this.groups.find(value => value.name === event.group.name);
+    if (group !== undefined) {
+      const namedPoint = group.values.find(value => value.name === event.name);
+      if (namedPoint !== undefined) {
+        namedPoint.value = event.value;
+        this.attributesChanged.emit(this.groups);
+      }
+    }
   }
 }
 
@@ -108,8 +95,3 @@ export interface PriorityChangedEvent {
   group: NamedPointsGroup;
 }
 
-export interface PointsClickedEvent {
-  group: NamedPointsGroup;
-  value: NamedPoints;
-  amount: number;
-}

@@ -25,7 +25,8 @@ export class AbilitiesService extends PointsService {
       }, {
         name: 'Leadership',
         points: this.getDefaultPoints()
-      }, {name: 'Streetwise', points: this.getDefaultPoints()}, {name: 'Subterfuge', points: this.getDefaultPoints()}],
+      }, {name: 'Streetwise', points: this.getDefaultPoints()}, {name: 'Subterfuge', points: this.getDefaultPoints()},
+        {name: 'talents-freetext', points: this.getDefaultPoints(), type: 'freetext'}],
       priority: undefined,
       availablePoints: -1,
     },
@@ -43,7 +44,8 @@ export class AbilitiesService extends PointsService {
       }, {
         name: 'Performance',
         points: this.getDefaultPoints()
-      }, {name: 'Stealth', points: this.getDefaultPoints()}, {name: 'Survival', points: this.getDefaultPoints()}],
+      }, {name: 'Stealth', points: this.getDefaultPoints()}, {name: 'Survival', points: this.getDefaultPoints()},
+        {name: 'skills-freetext', points: this.getDefaultPoints(), type: 'freetext'}],
       priority: undefined,
       availablePoints: -1,
     },
@@ -61,7 +63,11 @@ export class AbilitiesService extends PointsService {
       }, {
         name: 'Politics',
         points: this.getDefaultPoints()
-      }, {name: 'Science', points: this.getDefaultPoints()}, {name: 'Technology', points: this.getDefaultPoints()}],
+      }, {name: 'Science', points: this.getDefaultPoints()}, {name: 'Technology', points: this.getDefaultPoints()}, {
+        name: 'knowledge-freetext',
+        points: this.getDefaultPoints(),
+        type: 'freetext'
+      }],
       priority: undefined,
       availablePoints: -1,
     },

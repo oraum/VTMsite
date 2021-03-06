@@ -1,15 +1,26 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges} from '@angular/core';
 import {NamedPoints, NamedPointsGroup} from '../points.service';
+import {FormControl} from '@angular/forms';
+import {debounceTime} from 'rxjs/operators';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-point-selection-group',
   template: `
     <div class="rows" *ngIf="group">
       <div *ngFor="let attribute of group.values; trackBy: npTrackFn ">
-        <span class="attribute-name">{{attribute.name}}</span>
-        <!--<app-point-selection [minPoints]="getMinPoints(attribute)" [maxPoints]="group.maxPoints"
-                             [availablePoints]="group.availablePoints" [pointsGiven]="attribute.points"
-        ></app-point-selection>-->
+        <ng-container [ngSwitch]="attribute.type">
+          <ng-container *ngSwitchCase="'freetext'">
+            <app-free-text [value]="attribute.value"
+                           (valueChanged)="freeTextChanged.emit({value: $event, name: attribute.name, group: group})"></app-free-text>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            <span class="attribute-name">{{attribute.name}}</span>
+          </ng-container>
+        </ng-container>
+        <app-point-selection [points]="attribute.points"
+                             (pointsClicked)="pointsClicked.emit({group:group, value:attribute, amount: $event})"
+        ></app-point-selection>
       </div>
     </div>
   `,
@@ -34,26 +45,62 @@ import {NamedPoints, NamedPointsGroup} from '../points.service';
 export class PointSelectionGroupComponent {
   @Input() group: NamedPointsGroup | undefined;
 
-  @Output() pointsChanged = new EventEmitter<NamedPoints>();
+  @Output() pointsClicked = new EventEmitter<PointsClickedEvent>();
+
+  @Output() freeTextChanged = new EventEmitter<FreeTextChangedEvent>();
 
   constructor() {
-  }
-
-
-  ptsChanged(attribute: NamedPoints, points: number): void {
-    const oldPoints = attribute.points;
-    // attribute.points = points;
-    // this.availablePoints += (oldPoints - points);
-    this.pointsChanged.emit(attribute);
   }
 
   npTrackFn(index: number, item: NamedPoints): string {
     return `${item.name}${item.points}`;
   }
 
-  getMinPoints(attribute: NamedPoints): number {
-    return attribute.minPoints ?? this.group?.minPoints ?? 0;
+}
+
+@Component({
+  selector: 'app-free-text',
+  template: `
+    <mat-form-field>
+      <input matInput [formControl]="freeTextForm">
+    </mat-form-field>
+  `
+})
+export class FreetextValueInputComponent implements OnChanges, OnDestroy {
+  @Input()
+  value: string | undefined = undefined;
+
+  freeTextForm = new FormControl();
+
+  @Output() valueChanged = new EventEmitter<string>();
+  private formSubscription: Subscription;
+
+  constructor() {
+    this.formSubscription = this.freeTextForm.valueChanges.pipe(debounceTime(300)).subscribe(value1 => this.valueChanged.emit(value1));
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('value' in changes) {
+      this.freeTextForm.patchValue(changes.value.currentValue, {emitEvent: false});
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.formSubscription.unsubscribe();
+  }
+}
+
+
+export interface PointsClickedEvent {
+  group: NamedPointsGroup;
+  value: NamedPoints;
+  amount: number;
+}
+
+export interface FreeTextChangedEvent {
+  value: string;
+  name: string;
+  group: NamedPointsGroup;
 }
 
 

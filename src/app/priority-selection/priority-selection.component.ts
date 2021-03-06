@@ -14,7 +14,15 @@ import {Priority} from '../points.service';
       </mat-select>
     </mat-form-field>
   `,
-  styles: []
+  styles: [`
+    :host {
+      display: inline-flex;
+    }
+
+    mat-form-field {
+      flex-grow: 1;
+    }
+  `]
 })
 export class PrioritySelectionComponent {
 

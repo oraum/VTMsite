@@ -43,6 +43,7 @@ export abstract class PointsService {
           const val = group?.values.find(value1 => value1.name === value.name);
           if (val !== undefined) {
             val.points = value.points;
+            val.value = value.value;
           }
         });
 
@@ -127,6 +128,7 @@ export interface NamedPoints {
   points: Point[];
   minPoints?: number;
   type?: string;
+  value?: string;
 }
 
 export enum Point {
