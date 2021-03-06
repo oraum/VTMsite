@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {NamedPointsGroup} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
+import {NamedPoints, NamedPointsGroup} from '../points.service';
 
 @Component({
   selector: 'app-point-selection-group',
@@ -57,15 +57,4 @@ export class PointSelectionGroupComponent {
 }
 
 
-export interface NamedPoints {
-  name: string;
-  points: Point[];
-  minPoints?: number;
-  type?: string;
-}
 
-export enum Point {
-  Original = 'original',
-  Freebie = 'freebie',
-  None = 'none'
-}

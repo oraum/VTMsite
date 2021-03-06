@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Character, CharCreatorService} from './char-creator.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
-import {NamedPointsGroup} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
+import {NamedPointsGroup} from '../points.service';
 
 @Component({
   selector: 'app-character-creator',

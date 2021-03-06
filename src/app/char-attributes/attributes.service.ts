@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
-import {NamedPointsGroup, Priority} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
-import {PointsService} from '../points.service';
-import {Point} from '../point-selection-group/point-selection-group.component';
+import {NamedPointsGroup, Point, PointsService, Priority} from '../points.service';
 
 @Injectable({
   providedIn: 'root'

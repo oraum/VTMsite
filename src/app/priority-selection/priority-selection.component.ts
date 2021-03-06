@@ -1,5 +1,5 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {Priority} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Priority} from '../points.service';
 
 @Component({
   selector: 'app-priority-selection',

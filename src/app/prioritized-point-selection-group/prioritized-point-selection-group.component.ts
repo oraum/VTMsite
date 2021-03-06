@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {NamedPoints} from '../point-selection-group/point-selection-group.component';
+import {NamedPoints, NamedPointsGroup, PointsService, Priority} from '../points.service';
 
 @Component({
   selector: 'app-prioritized-point-selection-group',
@@ -11,13 +11,13 @@ import {NamedPoints} from '../point-selection-group/point-selection-group.compon
       </div>
 
       <app-priority-selection [priorities]="priorities" [selectedPriority]="groupPriority(group)"
-                              (priorityChanged)="priorityChanged.emit({priority: $event,group: group})"></app-priority-selection>
+                              (priorityChanged)="priorityChanged({priority: $event,group: group})"></app-priority-selection>
 
       <div class="rows" *ngIf="group">
         <div *ngFor="let attribute of group.values; trackBy: npTrackFn ">
           <span class="attribute-name">{{attribute.name}}</span>
           <app-point-selection [points]="attribute.points"
-                               (pointsClicked)="pointsClicked.emit({group:group, value:attribute, amount: $event})"
+                               (pointsClicked)="pointsClicked({group:group, value:attribute, amount: $event})"
           ></app-point-selection>
         </div>
       </div>
@@ -68,13 +68,27 @@ export class PrioritizedPointSelectionGroupComponent {
   @Input()
   priorities: Priority[] = [];
 
-  @Output() pointsClicked = new EventEmitter<PointsClickedEvent>();
+  @Input()
+  service: PointsService | undefined = undefined;
 
-  @Output() priorityChanged = new EventEmitter<PriorityChangedEvent>();
+  @Output()
+  attributesChanged = new EventEmitter<NamedPointsGroup[]>();
 
   constructor() {
   }
 
+
+  priorityChanged(event: PriorityChangedEvent): void {
+    const newGroups = this.service?.prioritySelectionChanged(event.priority, event.group, this.groups);
+    this.attributesChanged.emit(newGroups);
+  }
+
+  pointsClicked(event: PointsClickedEvent): void {
+    const newGroups = this.service?.pointSelection(event.amount, event.group, event.value);
+    if (newGroups !== null) {
+      this.attributesChanged.emit(this.groups);
+    }
+  }
 
   groupPriority(group: NamedPointsGroup): Priority | undefined {
     return this.priorities.find(value => value.name === group.priority);
@@ -98,18 +112,4 @@ export interface PointsClickedEvent {
   group: NamedPointsGroup;
   value: NamedPoints;
   amount: number;
-}
-
-export interface NamedPointsGroup {
-  name: string;
-  values: NamedPoints[];
-  priority?: string | undefined;
-  availablePoints: number;
-  minPoints?: number;
-  freebieCost?: number;
-}
-
-export interface Priority {
-  name: string;
-  availablePoints: number;
 }

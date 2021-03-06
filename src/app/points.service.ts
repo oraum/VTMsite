@@ -1,6 +1,3 @@
-import {NamedPointsGroup, Priority} from './prioritized-point-selection-group/prioritized-point-selection-group.component';
-import {NamedPoints, Point} from './point-selection-group/point-selection-group.component';
-
 /**
  * abstract service providing priorities and groups for {@see PrioritizedPointSelectionGroupComponent} and default implementation to merge
  * saved values with default ones
@@ -100,9 +97,10 @@ export abstract class PointsService {
     } else {
       // decrease
       if (points >= (group.minPoints ?? 0)) {
-        if (points === grpPoints && points === 1) {
+        if (points === grpPoints && points === 1 && (group.minPoints ?? 0) === 0) {
           // special case to deselect the only point given
           value.points = this.getDefaultPoints();
+          group.availablePoints += 1;
         } else {
           value.points = value.points.map((pt, index) => {
             if (index < points) {
@@ -121,4 +119,32 @@ export abstract class PointsService {
     group.availablePoints -= diff;
     return group;
   }
+}
+
+
+export interface NamedPoints {
+  name: string;
+  points: Point[];
+  minPoints?: number;
+  type?: string;
+}
+
+export enum Point {
+  Original = 'original',
+  Freebie = 'freebie',
+  None = 'none'
+}
+
+export interface NamedPointsGroup {
+  name: string;
+  values: NamedPoints[];
+  priority?: string | undefined;
+  availablePoints: number;
+  minPoints?: number;
+  freebieCost?: number;
+}
+
+export interface Priority {
+  name: string;
+  availablePoints: number;
 }

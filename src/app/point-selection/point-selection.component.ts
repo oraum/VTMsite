@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {Point} from '../point-selection-group/point-selection-group.component';
+import {Point} from '../points.service';
 
 /**
  * Component to give points to a value
