@@ -43,7 +43,7 @@ export class CharCreatorService {
     if (item !== null) {
       return JSON.parse(item);
     } else {
-      return {};
+      return {freebiePoints: 15};
     }
   }
 
@@ -64,6 +64,6 @@ export interface Character {
   clanBloodline?: string | undefined;
   attributes?: NamedPointsGroup[];
   abilities?: NamedPointsGroup[];
-  freebiePoints?: number;
+  freebiePoints: number;
   availablePoints?: number;
 }

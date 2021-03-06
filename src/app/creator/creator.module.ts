@@ -17,6 +17,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {ReactiveFormsModule} from '@angular/forms';
 import {PrioritySelectionComponent} from '../priority-selection/priority-selection.component';
+import {FreebiesComponent} from '../freebies/freebies.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {PrioritySelectionComponent} from '../priority-selection/priority-selecti
     PrioritizedPointSelectionGroupComponent,
     CharAbilitiesComponent,
     PrioritySelectionComponent,
-    FreetextValueInputComponent
+    FreetextValueInputComponent,
+    FreebiesComponent
   ],
   imports: [
     CommonModule,

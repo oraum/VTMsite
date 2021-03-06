@@ -21,7 +21,8 @@ export class AttributesService extends PointsService {
       }],
       priority: undefined,
       availablePoints: -1,
-      minPoints: 1
+      minPoints: 1,
+      freebieCost: 5
     },
     {
       name: 'Social',
@@ -34,7 +35,8 @@ export class AttributesService extends PointsService {
       }],
       priority: undefined,
       availablePoints: -1,
-      minPoints: 1
+      minPoints: 1,
+      freebieCost: 5
     },
     {
       name: 'Mental',
@@ -47,7 +49,8 @@ export class AttributesService extends PointsService {
       }],
       priority: undefined,
       availablePoints: -1,
-      minPoints: 1
+      minPoints: 1,
+      freebieCost: 5
     }
   ];
 
