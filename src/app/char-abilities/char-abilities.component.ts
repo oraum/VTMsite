@@ -1,5 +1,9 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import {NamedPointsGroup} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
+import {
+  NamedPointsGroup,
+  PointsClickedEvent,
+  PriorityChangedEvent
+} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
 import {AbilitiesService} from './abilities.service';
 
 @Component({
@@ -9,7 +13,9 @@ import {AbilitiesService} from './abilities.service';
 
     <app-prioritized-point-selection-group [groups]="groups"
                                            [priorities]="attributeService.priorities"
-                                           (pointsChanged)="attributesChanged.emit($event)"></app-prioritized-point-selection-group>
+                                           (priorityChanged)="priorityChanged($event)"
+                                           (pointsClicked)="pointsClicked($event)"
+    ></app-prioritized-point-selection-group>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -31,6 +37,18 @@ export class CharAbilitiesComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.savedAttributes) {
       this.groups = this.attributeService.getGroups(this.savedAttributes);
+    }
+  }
+
+  priorityChanged(event: PriorityChangedEvent): void {
+    const newGroups = this.attributeService.prioritySelectionChanged(event.priority, event.group, this.groups);
+    this.attributesChanged.emit(newGroups);
+  }
+
+  pointsClicked(event: PointsClickedEvent): void {
+    const newGroups = this.attributeService.pointSelection(event.amount, event.group, event.value);
+    if (newGroups !== null) {
+      this.attributesChanged.emit(this.groups);
     }
   }
 

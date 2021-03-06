@@ -7,21 +7,20 @@ import {NamedPoints} from '../point-selection-group/point-selection-group.compon
     <div *ngFor="let group of groups; trackBy:groupTrackFn" class="group">
       <div class="title">
         <span>{{group.name}}</span>
-        <span *ngIf="getAvailablePoints(group)>=0">{{getAvailablePoints(group)}}</span>
+        <span *ngIf="group.availablePoints>=0">{{group.availablePoints}}</span>
       </div>
 
-      <mat-form-field>
-        <mat-label></mat-label>
-        <mat-select (valueChange)="prioritySelectionChanged($event, group)"
-                    [value]="groupPriority(group)" placeholder="Priority">
-          <mat-option *ngFor="let priority of priorities" [value]="priority">
-            {{priority.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <app-priority-selection [priorities]="priorities" [selectedPriority]="groupPriority(group)"
+                              (priorityChanged)="priorityChanged.emit({priority: $event,group: group})"></app-priority-selection>
 
-      <app-point-selection-group [attributes]="group.values" [availablePoints]="getAvailablePoints(group)" [basePoints]="basePoints"
-                                 (pointsChanged)="ptsChanged($event, group)"></app-point-selection-group>
+      <div class="rows" *ngIf="group">
+        <div *ngFor="let attribute of group.values; trackBy: npTrackFn ">
+          <span class="attribute-name">{{attribute.name}}</span>
+          <app-point-selection [points]="attribute.points"
+                               (pointsClicked)="pointsClicked.emit({group:group, value:attribute, amount: $event})"
+          ></app-point-selection>
+        </div>
+      </div>
     </div>
   `,
   styles: [`
@@ -44,6 +43,21 @@ import {NamedPoints} from '../point-selection-group/point-selection-group.compon
       justify-content: space-between;
       align-items: center;
     }
+
+    .attribute-name {
+      flex-grow: 1;
+    }
+
+    .rows {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rows > * {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+    }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -54,51 +68,45 @@ export class PrioritizedPointSelectionGroupComponent {
   @Input()
   priorities: Priority[] = [];
 
-  @Input() basePoints = 0;
+  @Output() pointsClicked = new EventEmitter<PointsClickedEvent>();
 
-  @Output()
-  pointsChanged = new EventEmitter<NamedPointsGroup[]>();
+  @Output() priorityChanged = new EventEmitter<PriorityChangedEvent>();
 
   constructor() {
   }
 
-  prioritySelectionChanged(priority: Priority, group: NamedPointsGroup): void {
-    this.groups.filter(value => value.priority === priority.name).forEach(value => value.priority = undefined);
-    group.priority = priority.name;
-    group.values?.forEach(value => value.points = 0);
-  }
-
-  ptsChanged(attribute: NamedPoints, group: NamedPointsGroup): void {
-    const value = group.values.find(val => val.name === attribute.name);
-    if (value !== undefined) {
-      value.points = attribute.points;
-    }
-    this.pointsChanged.emit(this.groups);
-  }
 
   groupPriority(group: NamedPointsGroup): Priority | undefined {
     return this.priorities.find(value => value.name === group.priority);
   }
 
-  getAvailablePoints(group: NamedPointsGroup): number {
-    const priority = this.groupPriority(group);
-    if (priority !== undefined) {
-      const sum = group.values.map(value => value.points).reduce((previousValue, currentValue) => previousValue + currentValue);
-
-      return priority.availablePoints - sum;
-    }
-    return 0;
-  }
-
   groupTrackFn(index: number, item: NamedPointsGroup): string {
     return `${item.name}`;
   }
+
+  npTrackFn(index: number, item: NamedPoints): string {
+    return `${item.name}${item.points}`;
+  }
+}
+
+export interface PriorityChangedEvent {
+  priority: Priority;
+  group: NamedPointsGroup;
+}
+
+export interface PointsClickedEvent {
+  group: NamedPointsGroup;
+  value: NamedPoints;
+  amount: number;
 }
 
 export interface NamedPointsGroup {
   name: string;
   values: NamedPoints[];
   priority?: string | undefined;
+  availablePoints: number;
+  minPoints?: number;
+  freebieCost?: number;
 }
 
 export interface Priority {

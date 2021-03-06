@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {Point} from '../point-selection-group/point-selection-group.component';
 
 /**
  * Component to give points to a value
@@ -6,54 +7,29 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnIn
 @Component({
   selector: 'app-point-selection',
   template: `
-    <button mat-icon-button *ngFor="let i of pointArray" (click)="onClick(i+1); $event.stopPropagation()">
+    <button mat-icon-button *ngFor="let point of points;index as i" (click)="onClick(i+1); $event.stopPropagation()">
       <mat-icon>
-        {{showIcon(i)}}
+        {{showIcon(point)}}
       </mat-icon>
     </button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PointSelectionComponent implements OnInit, OnChanges {
+export class PointSelectionComponent {
 
-  /**
-   * points always given to the value without spending additional points
-   */
-  @Input() basePoints = 0;
-  /**
-   * maximum number of points the value can have (incl. basePoints)
-   */
-  @Input() maxPoints = 5;
-  /**
-   * number of points which can be spent
-   */
-  @Input() availablePoints = 0;
   /**
    * number of points spent on this value
    */
-  @Input() pointsGiven = 0;
-  public pointArray: number[] = [];
-  public points = 0;
+  @Input() points: Point[] = [];
 
   /**
    * Event with updated value of points spent on value
    */
-  @Output() pointsChanged = new EventEmitter<number>();
+  @Output() pointsClicked = new EventEmitter<number>();
 
-  ngOnInit(): void {
-    for (let index = 0; index < this.maxPoints; index++) {
-      this.pointArray.push(index);
-    }
-  }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if ('pointsGiven' in changes) {
-      this.points = this.pointsGiven + this.basePoints;
-    }
-  }
-
-  showIcon(index: number): string {
-    if (this.points >= index + 1) {
+  showIcon(point: Point): string {
+    if (point === Point.Original || point === Point.Freebie) {
       return 'radio_button_checked';
     } else {
       return 'radio_button_unchecked';
@@ -61,30 +37,8 @@ export class PointSelectionComponent implements OnInit, OnChanges {
   }
 
   onClick(points: number): void {
-    if (points > this.points) {
-      // increase
-      if (points - this.points <= this.availablePoints) {
-        this.points = points;
-      } else {
-        // tried to spend more points than available - aborting
-        return;
-      }
-    } else {
-      // decrease
-      if (points > this.basePoints) {
-        if (points === this.points && points === 1) {
-          // special case to deselect the only point given
-          this.points = this.basePoints;
-        } else {
-          this.points = points;
-        }
-      } else {
-        // tried to set less than base points which should not be possible, use basePoints instead
-        this.points = this.basePoints;
-      }
-    }
     // publish new points
-    this.pointsChanged.emit(this.points - this.basePoints);
+    this.pointsClicked.emit(points);
   }
 
 }

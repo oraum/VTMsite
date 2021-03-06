@@ -16,6 +16,7 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {ReactiveFormsModule} from '@angular/forms';
+import {PrioritySelectionComponent} from '../priority-selection/priority-selection.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     PointSelectionComponent,
     PointSelectionGroupComponent,
     PrioritizedPointSelectionGroupComponent,
-    CharAbilitiesComponent],
+    CharAbilitiesComponent,
+    PrioritySelectionComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -1,13 +1,15 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {NamedPointsGroup} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
 
 @Component({
   selector: 'app-point-selection-group',
   template: `
-    <div class="rows">
-      <div *ngFor="let attribute of attributes; trackBy: npTrackFn ">
+    <div class="rows" *ngIf="group">
+      <div *ngFor="let attribute of group.values; trackBy: npTrackFn ">
         <span class="attribute-name">{{attribute.name}}</span>
-        <app-point-selection [basePoints]="basePoints" [maxPoints]="5" [availablePoints]="availablePoints" [pointsGiven]="attribute.points"
-                             (pointsChanged)="ptsChanged(attribute,$event)"></app-point-selection>
+        <!--<app-point-selection [minPoints]="getMinPoints(attribute)" [maxPoints]="group.maxPoints"
+                             [availablePoints]="group.availablePoints" [pointsGiven]="attribute.points"
+        ></app-point-selection>-->
       </div>
     </div>
   `,
@@ -30,11 +32,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PointSelectionGroupComponent {
-  @Input() attributes: NamedPoints[] | undefined;
-
-  @Input() availablePoints = -1;
-
-  @Input() basePoints = 0;
+  @Input() group: NamedPointsGroup | undefined;
 
   @Output() pointsChanged = new EventEmitter<NamedPoints>();
 
@@ -44,18 +42,30 @@ export class PointSelectionGroupComponent {
 
   ptsChanged(attribute: NamedPoints, points: number): void {
     const oldPoints = attribute.points;
-    attribute.points = points;
-    this.availablePoints += (oldPoints - points);
+    // attribute.points = points;
+    // this.availablePoints += (oldPoints - points);
     this.pointsChanged.emit(attribute);
   }
 
   npTrackFn(index: number, item: NamedPoints): string {
     return `${item.name}${item.points}`;
   }
+
+  getMinPoints(attribute: NamedPoints): number {
+    return attribute.minPoints ?? this.group?.minPoints ?? 0;
+  }
 }
 
 
 export interface NamedPoints {
   name: string;
-  points: number;
+  points: Point[];
+  minPoints?: number;
+  type?: string;
+}
+
+export enum Point {
+  Original = 'original',
+  Freebie = 'freebie',
+  None = 'none'
 }

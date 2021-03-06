@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NamedPointsGroup, Priority} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
 import {PointsService} from '../points.service';
+import {Point} from '../point-selection-group/point-selection-group.component';
 
 @Injectable({
   providedIn: 'root'
@@ -14,37 +15,62 @@ export class AbilitiesService extends PointsService {
   defaultGroups: NamedPointsGroup[] = [
     {
       name: 'Talents',
-      values: [{name: 'Alertness', points: 0}, {name: 'Athletics', points: 0}, {name: 'Awareness', points: 0}, {
+      values: [{name: 'Alertness', points: this.getDefaultPoints()}, {
+        name: 'Athletics',
+        points: this.getDefaultPoints()
+      }, {name: 'Awareness', points: this.getDefaultPoints()}, {
         name: 'Brawl',
-        points: 0
-      }, {name: 'Empathy', points: 0}, {name: 'Expression', points: 0}, {name: 'Intimidation', points: 0}, {
+        points: this.getDefaultPoints()
+      }, {name: 'Empathy', points: this.getDefaultPoints()}, {name: 'Expression', points: this.getDefaultPoints()}, {
+        name: 'Intimidation',
+        points: this.getDefaultPoints()
+      }, {
         name: 'Leadership',
-        points: 0
-      }, {name: 'Streetwise', points: 0}, {name: 'Subterfuge', points: 0}],
-      priority: undefined
+        points: this.getDefaultPoints()
+      }, {name: 'Streetwise', points: this.getDefaultPoints()}, {name: 'Subterfuge', points: this.getDefaultPoints()}],
+      priority: undefined,
+      availablePoints: -1,
     },
     {
       name: 'Skills',
-      values: [{name: 'Animal Ken', points: 0}, {name: 'Crafts', points: 0}, {name: 'Drive', points: 0}, {
+      values: [{name: 'Animal Ken', points: this.getDefaultPoints()}, {name: 'Crafts', points: this.getDefaultPoints()}, {
+        name: 'Drive',
+        points: this.getDefaultPoints()
+      }, {
         name: 'Etiquette',
-        points: 0
-      }, {name: 'Firearms', points: 0}, {name: 'Larceny', points: 0}, {name: 'Melee', points: 0}, {
+        points: this.getDefaultPoints()
+      }, {name: 'Firearms', points: this.getDefaultPoints()}, {name: 'Larceny', points: this.getDefaultPoints()}, {
+        name: 'Melee',
+        points: this.getDefaultPoints()
+      }, {
         name: 'Performance',
-        points: 0
-      }, {name: 'Stealth', points: 0}, {name: 'Survival', points: 0}],
-      priority: undefined
+        points: this.getDefaultPoints()
+      }, {name: 'Stealth', points: this.getDefaultPoints()}, {name: 'Survival', points: this.getDefaultPoints()}],
+      priority: undefined,
+      availablePoints: -1,
     },
     {
       name: 'Knowledge',
-      values: [{name: 'Academics', points: 0}, {name: 'Computer', points: 0}, {name: 'Finance', points: 0}, {
+      values: [{name: 'Academics', points: this.getDefaultPoints()}, {name: 'Computer', points: this.getDefaultPoints()}, {
+        name: 'Finance',
+        points: this.getDefaultPoints()
+      }, {
         name: 'Investigation',
-        points: 0
-      }, {name: 'Law', points: 0}, {name: 'Medicine', points: 0}, {name: 'Occult', points: 0}, {
+        points: this.getDefaultPoints()
+      }, {name: 'Law', points: this.getDefaultPoints()}, {name: 'Medicine', points: this.getDefaultPoints()}, {
+        name: 'Occult',
+        points: this.getDefaultPoints()
+      }, {
         name: 'Politics',
-        points: 0
-      }, {name: 'Science', points: 0}, {name: 'Technology', points: 0}],
-      priority: undefined
+        points: this.getDefaultPoints()
+      }, {name: 'Science', points: this.getDefaultPoints()}, {name: 'Technology', points: this.getDefaultPoints()}],
+      priority: undefined,
+      availablePoints: -1,
     },
   ];
+
+  getDefaultPoints(): Point[] {
+    return [Point.None, Point.None, Point.None, Point.None, Point.None];
+  }
 
 }
