@@ -11,10 +11,15 @@ import {CharAttributesComponent} from '../char-attributes/char-attributes.compon
 import {CharAbilitiesComponent} from '../char-abilities/char-abilities.component';
 import {PrioritizedPointSelectionGroupComponent} from '../prioritized-point-selection-group/prioritized-point-selection-group.component';
 import {PointSelectionComponent} from '../point-selection/point-selection.component';
-import {PointSelectionGroupComponent} from '../point-selection-group/point-selection-group.component';
+import {FreetextValueInputComponent, PointSelectionGroupComponent} from '../point-selection-group/point-selection-group.component';
 import {MatIcon} from '@angular/material/icon';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
+import {FreebiesComponent} from '../freebies/freebies.component';
+import {DisciplinesComponent} from '../disciplines/disciplines.component';
+import {BackgroundsComponent} from '../backgrounds/backgrounds.component';
+import {VirtuesComponent} from '../virtues/virtues.component';
+import {PrioritySelectionComponent} from '../priority-selection/priority-selection.component';
 
 describe('CharacterCreatorComponent', () => {
   let component: CharacterCreatorComponent;
@@ -23,7 +28,8 @@ describe('CharacterCreatorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CharacterCreatorComponent, ClanSelectionComponent, CharAttributesComponent, CharAbilitiesComponent,
-        PrioritizedPointSelectionGroupComponent, PointSelectionGroupComponent, PointSelectionComponent, MatIcon],
+        PrioritizedPointSelectionGroupComponent, PointSelectionGroupComponent, PointSelectionComponent, MatIcon, FreebiesComponent,
+        DisciplinesComponent, BackgroundsComponent, VirtuesComponent, PrioritySelectionComponent, FreetextValueInputComponent],
       imports: [MatSelectModule, MatOptionModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule, MatIconTestingModule,
         ReactiveFormsModule]
     })

@@ -19,6 +19,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {PrioritySelectionComponent} from '../priority-selection/priority-selection.component';
 import {FreebiesComponent} from '../freebies/freebies.component';
 import {DisciplinesComponent} from '../disciplines/disciplines.component';
+import {BackgroundsComponent} from '../backgrounds/backgrounds.component';
+import {VirtuesComponent} from '../virtues/virtues.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import {DisciplinesComponent} from '../disciplines/disciplines.component';
     PrioritySelectionComponent,
     FreetextValueInputComponent,
     FreebiesComponent,
-    DisciplinesComponent
+    DisciplinesComponent,
+    BackgroundsComponent,
+    VirtuesComponent
   ],
   imports: [
     CommonModule,

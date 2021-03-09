@@ -22,6 +22,6 @@ describe('AbilitiesService', () => {
   it('should contain default abilities', () => {
     expect(service.defaultGroups).toBeTruthy();
     expect(service.defaultGroups).toHaveSize(3);
-    expect(service.defaultGroups[0].values).toHaveSize(10);
+    expect(service.defaultGroups[0].values).toHaveSize(11);
   });
 });

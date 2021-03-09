@@ -11,6 +11,7 @@ import {PointSelectionGroupComponent} from '../point-selection-group/point-selec
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatIcon} from '@angular/material/icon';
+import {PrioritySelectionComponent} from '../priority-selection/priority-selection.component';
 
 describe('CharAttributesComponent', () => {
   let component: CharAttributesComponent;
@@ -19,7 +20,7 @@ describe('CharAttributesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CharAttributesComponent, PrioritizedPointSelectionGroupComponent, PointSelectionComponent,
-        PointSelectionGroupComponent, MatIcon],
+        PointSelectionGroupComponent, MatIcon, PrioritySelectionComponent],
       imports: [MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, NoopAnimationsModule, MatIconTestingModule]
     })
       .compileComponents();

@@ -8,6 +8,10 @@ import {DisciplineService} from './discipline.service';
   selector: 'app-disciplines',
   template: `
     <div class="rows" *ngIf="disciplines">
+      <div class="title">
+        <h2 class="mat-h2">Disciplines</h2>
+        <span>{{disciplines.availablePoints}}</span>
+      </div>
       <div *ngFor="let attribute of disciplines.values; trackBy: npTrackFn ">
         <mat-form-field>
           <mat-label></mat-label>
@@ -23,7 +27,22 @@ import {DisciplineService} from './discipline.service';
       </div>
     </div>
   `,
-  styles: []
+  styles: [`
+    .rows {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rows > * {
+      display: inline-flex;
+      flex-grow: 1;
+      align-items: center;
+    }
+
+    .mat-h2 {
+      flex-grow: 1;
+    }
+  `],
 })
 export class DisciplinesComponent {
   @Input()

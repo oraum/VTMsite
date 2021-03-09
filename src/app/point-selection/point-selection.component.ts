@@ -7,13 +7,21 @@ import {Point} from '../points.service';
 @Component({
   selector: 'app-point-selection',
   template: `
-    <button mat-icon-button *ngFor="let point of points;index as i" (click)="onClick(i+1); $event.stopPropagation()">
+    <button mat-icon-button *ngFor="let point of points;index as i" (click)="onClick(i+1); $event.stopPropagation()" class="narrow-icon"
+            disableRipple="true">
       <mat-icon>
         {{showIcon(point)}}
       </mat-icon>
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [`
+    .narrow-icon {
+      width: 24px;
+      height: 36px;
+      line-height: 36px;
+    }
+  `]
 })
 export class PointSelectionComponent {
 

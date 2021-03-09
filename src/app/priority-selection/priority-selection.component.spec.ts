@@ -1,6 +1,9 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PrioritySelectionComponent} from './priority-selection.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('PrioritySelectionComponent', () => {
   let component: PrioritySelectionComponent;
@@ -8,7 +11,8 @@ describe('PrioritySelectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PrioritySelectionComponent]
+      declarations: [PrioritySelectionComponent],
+      imports: [MatFormFieldModule, MatSelectModule, NoopAnimationsModule]
     })
       .compileComponents();
   });

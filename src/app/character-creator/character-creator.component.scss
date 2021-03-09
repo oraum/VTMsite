@@ -26,3 +26,8 @@ h1 {
   margin-top: 8px;
   margin-left: 4px;
 }
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+}

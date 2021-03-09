@@ -28,6 +28,7 @@ import {FreeTextChangedEvent, PointsClickedEvent} from '../point-selection-group
     .group {
       display: flex;
       flex-direction: column;
+      flex-basis: 220px;
       padding: 4px;
       flex-grow: 1;
       margin-bottom: 32px;

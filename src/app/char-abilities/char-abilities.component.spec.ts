@@ -5,9 +5,13 @@ import {PrioritizedPointSelectionGroupComponent} from '../prioritized-point-sele
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {PointSelectionGroupComponent} from '../point-selection-group/point-selection-group.component';
+import {FreetextValueInputComponent, PointSelectionGroupComponent} from '../point-selection-group/point-selection-group.component';
 import {PointSelectionComponent} from '../point-selection/point-selection.component';
-import {MatIconModule} from '@angular/material/icon';
+import {PrioritySelectionComponent} from '../priority-selection/priority-selection.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconTestingModule} from '@angular/material/icon/testing';
+import {MatIcon} from '@angular/material/icon';
+import {ReactiveFormsModule} from '@angular/forms';
 
 describe('CharAbilitiesComponent', () => {
   let component: CharAbilitiesComponent;
@@ -16,8 +20,8 @@ describe('CharAbilitiesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CharAbilitiesComponent, PrioritizedPointSelectionGroupComponent, PointSelectionGroupComponent,
-        PointSelectionComponent],
-      imports: [MatFormFieldModule, MatSelectModule, NoopAnimationsModule, MatIconModule]
+        PointSelectionComponent, PrioritySelectionComponent, FreetextValueInputComponent, MatIcon],
+      imports: [MatFormFieldModule, MatSelectModule, NoopAnimationsModule, MatIconTestingModule, MatInputModule, ReactiveFormsModule]
     })
       .compileComponents();
   });
