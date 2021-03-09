@@ -2,7 +2,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Character, CharCreatorService} from './char-creator.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
-import {NamedPointsGroup} from '../points.service';
+import {NamedPointsGroup, Point} from '../points.service';
+import {Clan} from '../clan-selection/clan.service';
 
 @Component({
   selector: 'app-character-creator',
@@ -38,8 +39,13 @@ export class CharacterCreatorComponent {
     return this.charCreatorService.generations[10];
   }
 
-  updateClan(clan: string): void {
-    this.character.clanBloodline = clan;
+  updateClan(clan: Clan): void {
+    this.character.clanBloodline = clan.name;
+    this.character.disciplines = {
+      name: 'disciplines',
+      availablePoints: 3,
+      values: clan.disciplines.map(value => ({name: value, points: [Point.None, Point.None, Point.None, Point.None, Point.None]}))
+    };
     this.charCreatorService.character = this.character;
   }
 

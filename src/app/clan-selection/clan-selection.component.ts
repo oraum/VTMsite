@@ -14,7 +14,7 @@ export class ClanSelectionComponent implements OnChanges {
   public clan: Clan | undefined = undefined;
 
   @Output()
-  clanChanged = new EventEmitter<string>();
+  clanChanged = new EventEmitter<Clan>();
 
   constructor(public clanService: ClanService) {
     this.clan = clanService.clanList[0];

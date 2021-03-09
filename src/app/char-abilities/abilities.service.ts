@@ -1,10 +1,15 @@
 import {Injectable} from '@angular/core';
 import {NamedPointsGroup, Point, PointsService, Priority} from '../points.service';
+import {FreebiesService} from '../freebies/freebies.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AbilitiesService extends PointsService {
+  constructor(freebieService: FreebiesService) {
+    super(freebieService);
+  }
+
   priorities: Priority[] = [{name: 'Primary', availablePoints: 13}, {name: 'Secondary', availablePoints: 9}, {
     name: 'Tertiary',
     availablePoints: 5

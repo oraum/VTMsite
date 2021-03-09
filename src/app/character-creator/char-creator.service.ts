@@ -64,6 +64,7 @@ export interface Character {
   clanBloodline?: string | undefined;
   attributes?: NamedPointsGroup[];
   abilities?: NamedPointsGroup[];
+  disciplines?: NamedPointsGroup;
   freebiePoints: number;
   availablePoints?: number;
 }

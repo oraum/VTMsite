@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {ReactiveFormsModule} from '@angular/forms';
 import {PrioritySelectionComponent} from '../priority-selection/priority-selection.component';
 import {FreebiesComponent} from '../freebies/freebies.component';
+import {DisciplinesComponent} from '../disciplines/disciplines.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {FreebiesComponent} from '../freebies/freebies.component';
     CharAbilitiesComponent,
     PrioritySelectionComponent,
     FreetextValueInputComponent,
-    FreebiesComponent
+    FreebiesComponent,
+    DisciplinesComponent
   ],
   imports: [
     CommonModule,

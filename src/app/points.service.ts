@@ -74,19 +74,17 @@ export abstract class PointsService {
     const diff = points - grpPoints;
     if (diff > 0) {
       // increase
-      if (!this.freebieService.freebieModeActive) {
-        if (diff <= availablePoints) {
-          value.points = value.points.map((pt, index) => {
-            if (index < points && pt === Point.None) {
-              return Point.Original;
-            } else {
-              return pt;
-            }
-          });
-        } else {
-          // tried to spend more points than available - aborting
-          return null;
-        }
+      if (diff <= availablePoints) {
+        value.points = value.points.map((pt, index) => {
+          if (index < points && pt === Point.None) {
+            return Point.Original;
+          } else {
+            return pt;
+          }
+        });
+      } else {
+        // tried to spend more points than available - aborting
+        return null;
       }
     } else {
       // decrease
