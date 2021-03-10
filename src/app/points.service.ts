@@ -74,7 +74,7 @@ export abstract class PointsService {
     const diff = points - grpPoints;
     if (diff > 0) {
       // increase
-      if (diff <= availablePoints) {
+      if (diff <= availablePoints && value.editable !== false) {
         value.points = value.points.map((pt, index) => {
           if (index < points && pt === Point.None) {
             return Point.Original;
@@ -120,6 +120,7 @@ export interface NamedPoints {
   minPoints?: number;
   type?: string;
   value?: string;
+  editable?: boolean;
 }
 
 export enum Point {

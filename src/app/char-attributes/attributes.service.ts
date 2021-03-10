@@ -63,4 +63,17 @@ export class AttributesService extends PointsService {
     return [Point.Original, Point.None, Point.None, Point.None, Point.None];
   }
 
+  prioritySelectionChanged(priority: Priority, group: NamedPointsGroup, grps: NamedPointsGroup[]): NamedPointsGroup[] {
+    const groups = [...grps];
+    groups.filter(value => value.priority === priority.name).forEach(value => {
+      value.priority = undefined;
+      value.availablePoints = -1;
+    });
+    group.priority = priority.name;
+    group.availablePoints = priority.availablePoints;
+    group.values?.filter(value => value.editable !== false).forEach(value => {
+      value.points = this.getDefaultPoints();
+    });
+    return groups;
+  }
 }

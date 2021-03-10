@@ -56,7 +56,7 @@
     </form>
   </div>
   <app-clan-selection (clanChanged)="updateClan($event)" [clanName]="character.clanBloodline"></app-clan-selection>
-  <app-char-attributes (attributesChanged)="updateAttributes($event)"
+  <app-char-attributes (attributesChanged)="updateAttributes($event)" [clan]="character.clanBloodline"
                        [savedAttributes]="character.attributes"></app-char-attributes>
   <app-char-abilities (attributesChanged)="updateAbilities($event)"
                       [savedAttributes]="character.abilities"></app-char-abilities>

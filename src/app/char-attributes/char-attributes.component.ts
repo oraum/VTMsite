@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {AttributesService} from './attributes.service';
-import {NamedPointsGroup} from '../points.service';
+import {NamedPoints, NamedPointsGroup, Point} from '../points.service';
 
 @Component({
   selector: 'app-char-attributes',
@@ -15,8 +15,13 @@ import {NamedPointsGroup} from '../points.service';
 })
 export class CharAttributesComponent implements OnChanges {
 
+  uglyClans = ['Gargoyles', 'Harbingers of Skulls', 'Nosferatu', 'Samedi'];
+
   @Input()
   savedAttributes: NamedPointsGroup[] | undefined = [];
+
+  @Input()
+  clan: string | undefined = undefined;
 
   @Output()
   attributesChanged = new EventEmitter<NamedPointsGroup[]>();
@@ -30,7 +35,28 @@ export class CharAttributesComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.savedAttributes) {
       this.groups = this.attributeService.getGroups(this.savedAttributes);
+      if (this.clan !== undefined && this.uglyClans.includes(this.clan)) {
+        this.getAppearance().editable = false;
+        this.getAppearance().points = this.getNoPoints();
+      }
     }
+    if ('clan' in changes) {
+      if (this.uglyClans.includes(changes.clan.currentValue)) {
+        this.getAppearance().editable = false;
+        this.getAppearance().points = this.getNoPoints();
+      } else {
+        this.getAppearance().editable = true;
+        this.getAppearance().points = this.attributeService.getDefaultPoints();
+      }
+    }
+  }
+
+  getNoPoints(): Point[] {
+    return [Point.None, Point.None, Point.None, Point.None, Point.None];
+  }
+
+  getAppearance(): NamedPoints {
+    return this.groups[1].values[2];
   }
 }
 
