@@ -4,7 +4,7 @@ import {Point} from '../points.service';
 @Component({
   selector: 'app-virtues',
   template: `
-    <h2 class="mat-h2">Backgrounds</h2>
+    <h2 class="mat-h2">Virtues</h2>
     <div>
       <span>Conscience/Conviction</span>
       <app-point-selection [points]="getPoints()"></app-point-selection>

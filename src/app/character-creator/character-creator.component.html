@@ -64,6 +64,7 @@
 <div>
   <app-freebies [freebiePoints]="character.freebiePoints"></app-freebies>
   <app-disciplines [disciplines]="character.disciplines"></app-disciplines>
-  <app-backgrounds></app-backgrounds>
+  <app-backgrounds (backgroundsChanged)="updateBackgrounds($event)"
+                   [savedBackgrounds]="character.backgrounds"></app-backgrounds>
   <app-virtues></app-virtues>
 </div>

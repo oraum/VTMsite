@@ -42,6 +42,10 @@ import {DisciplineService} from './discipline.service';
     .mat-h2 {
       flex-grow: 1;
     }
+
+    app-point-selection {
+      margin-left: 8px;
+    }
   `],
 })
 export class DisciplinesComponent {

@@ -39,6 +39,10 @@ import {Subscription} from 'rxjs';
       flex-grow: 1;
       align-items: center;
     }
+
+    app-point-selection {
+      margin-left: 8px;
+    }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -64,7 +68,12 @@ export class PointSelectionGroupComponent {
     <mat-form-field>
       <input matInput [formControl]="freeTextForm">
     </mat-form-field>
-  `
+  `,
+  styles: [`
+    :host mat-form-field {
+      width: 125px;
+    }
+  `]
 })
 export class FreetextValueInputComponent implements OnChanges, OnDestroy {
   @Input()

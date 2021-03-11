@@ -58,4 +58,9 @@ export class CharacterCreatorComponent {
     this.character.abilities = groups;
     this.charCreatorService.character = this.character;
   }
+
+  updateBackgrounds(backgrounds: NamedPointsGroup): void {
+    this.character.backgrounds = backgrounds;
+    this.charCreatorService.character = this.character;
+  }
 }

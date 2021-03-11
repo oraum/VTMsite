@@ -65,6 +65,7 @@ export interface Character {
   attributes?: NamedPointsGroup[];
   abilities?: NamedPointsGroup[];
   disciplines?: NamedPointsGroup;
+  backgrounds?: NamedPointsGroup;
   freebiePoints: number;
   availablePoints?: number;
 }
