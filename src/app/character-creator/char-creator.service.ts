@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {NamedPointsGroup} from '../points.service';
+import {NamedPoints, NamedPointsGroup} from '../points.service';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +66,9 @@ export interface Character {
   abilities?: NamedPointsGroup[];
   disciplines?: NamedPointsGroup;
   backgrounds?: NamedPointsGroup;
+  virtues?: NamedPointsGroup;
+  path?: NamedPoints;
+  willpower?: NamedPoints;
   freebiePoints: number;
   availablePoints?: number;
 }

@@ -66,5 +66,8 @@
   <app-disciplines [disciplines]="character.disciplines"></app-disciplines>
   <app-backgrounds (backgroundsChanged)="updateBackgrounds($event)"
                    [savedBackgrounds]="character.backgrounds"></app-backgrounds>
-  <app-virtues></app-virtues>
+  <app-virtues (virtuesChanged)="updateVirtues($event)" [savedVirtues]="character.virtues"></app-virtues>
+  <app-path (pathChanged)="updatePath($event)" [savedPath]="character.path"
+            [savedVirtues]="character.virtues"></app-path>
+  <app-willpower [savedVirtues]="character.virtues" [savedWillpower]="character.willpower"></app-willpower>
 </div>

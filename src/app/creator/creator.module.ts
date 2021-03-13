@@ -21,6 +21,8 @@ import {FreebiesComponent} from '../freebies/freebies.component';
 import {DisciplinesComponent} from '../disciplines/disciplines.component';
 import {BackgroundsComponent} from '../backgrounds/backgrounds.component';
 import {VirtuesComponent} from '../virtues/virtues.component';
+import {PathComponent} from '../path/path.component';
+import {WillpowerComponent} from '../willpower/willpower.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import {VirtuesComponent} from '../virtues/virtues.component';
     FreebiesComponent,
     DisciplinesComponent,
     BackgroundsComponent,
-    VirtuesComponent
+    VirtuesComponent,
+    PathComponent,
+    WillpowerComponent
   ],
   imports: [
     CommonModule,

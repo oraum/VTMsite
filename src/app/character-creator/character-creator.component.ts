@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Character, CharCreatorService} from './char-creator.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
-import {NamedPointsGroup, Point} from '../points.service';
+import {NamedPoints, NamedPointsGroup, Point} from '../points.service';
 import {Clan} from '../clan-selection/clan.service';
 
 @Component({
@@ -61,6 +61,16 @@ export class CharacterCreatorComponent {
 
   updateBackgrounds(backgrounds: NamedPointsGroup): void {
     this.character.backgrounds = backgrounds;
+    this.charCreatorService.character = this.character;
+  }
+
+  updateVirtues(virtues: NamedPointsGroup): void {
+    this.character.virtues = virtues;
+    this.charCreatorService.character = this.character;
+  }
+
+  updatePath(path: NamedPoints): void {
+    this.character.path = path;
     this.charCreatorService.character = this.character;
   }
 }

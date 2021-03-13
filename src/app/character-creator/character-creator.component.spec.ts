@@ -20,6 +20,7 @@ import {DisciplinesComponent} from '../disciplines/disciplines.component';
 import {BackgroundsComponent} from '../backgrounds/backgrounds.component';
 import {VirtuesComponent} from '../virtues/virtues.component';
 import {PrioritySelectionComponent} from '../priority-selection/priority-selection.component';
+import {PathComponent} from '../path/path.component';
 
 describe('CharacterCreatorComponent', () => {
   let component: CharacterCreatorComponent;
@@ -29,7 +30,8 @@ describe('CharacterCreatorComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [CharacterCreatorComponent, ClanSelectionComponent, CharAttributesComponent, CharAbilitiesComponent,
         PrioritizedPointSelectionGroupComponent, PointSelectionGroupComponent, PointSelectionComponent, MatIcon, FreebiesComponent,
-        DisciplinesComponent, BackgroundsComponent, VirtuesComponent, PrioritySelectionComponent, FreetextValueInputComponent],
+        DisciplinesComponent, BackgroundsComponent, VirtuesComponent, PrioritySelectionComponent, FreetextValueInputComponent,
+        PathComponent],
       imports: [MatSelectModule, MatOptionModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule, MatIconTestingModule,
         ReactiveFormsModule]
     })

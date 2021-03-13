@@ -8,7 +8,7 @@ import {Point} from '../points.service';
   selector: 'app-point-selection',
   template: `
     <button mat-icon-button *ngFor="let point of points;index as i" (click)="onClick(i+1); $event.stopPropagation()" class="narrow-icon"
-            disableRipple="true">
+            [disabled]="disabled" disableRipple="true">
       <mat-icon>
         {{showIcon(point)}}
       </mat-icon>
@@ -29,6 +29,8 @@ export class PointSelectionComponent {
    * number of points spent on this value
    */
   @Input() points: Point[] = [];
+
+  @Input() disabled = false;
 
   /**
    * Event with updated value of points spent on value
