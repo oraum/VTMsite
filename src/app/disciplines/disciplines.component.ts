@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, Output} from '@angular/core';
 import {FreebiesService} from '../freebies/freebies.service';
 import {NamedPoints, NamedPointsGroup} from '../points.service';
 import {PointsClickedEvent} from '../point-selection-group/point-selection-group.component';
@@ -48,7 +48,7 @@ import {DisciplineService} from './discipline.service';
     }
   `],
 })
-export class DisciplinesComponent {
+export class DisciplinesComponent implements AfterViewInit {
   @Input()
   disciplines: NamedPointsGroup | undefined = undefined;
 
@@ -67,6 +67,12 @@ export class DisciplinesComponent {
 
   npTrackFn(index: number, item: NamedPoints): string {
     return `${item.name}${item.points}`;
+  }
+
+  ngAfterViewInit(): void {
+    if (this.disciplines === undefined) {
+      this.disciplines = this.disciplineService.defaultGroups[0];
+    }
   }
 
 }

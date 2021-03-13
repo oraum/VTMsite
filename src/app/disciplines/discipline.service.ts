@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Point, PointsService} from '../points.service';
+import {NamedPointsGroup, Point, PointsService} from '../points.service';
 import {FreebiesService} from '../freebies/freebies.service';
 
 @Injectable({
@@ -14,7 +14,11 @@ export class DisciplineService extends PointsService {
     'Presence', 'Protean', 'Quietus', 'Sanguinus',
     'Serpentis', 'Spiritus', 'Temporis', 'Thanatosis',
     'Thaumaturgy', 'Valeren', 'Vicissitude', 'Visceratika'];
-  defaultGroups = [];
+  defaultGroups: NamedPointsGroup[] = [{
+    name: 'disciplines',
+    availablePoints: 3,
+    values: [{name: 'dummy', points: [Point.None, Point.None, Point.None, Point.None, Point.None]}]
+  }];
   priorities = [];
 
   constructor(freebieService: FreebiesService) {
