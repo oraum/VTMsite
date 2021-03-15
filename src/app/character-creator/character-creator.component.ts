@@ -73,4 +73,9 @@ export class CharacterCreatorComponent {
     this.character.path = path;
     this.charCreatorService.character = this.character;
   }
+
+  updateDisciplines(disciplines: NamedPointsGroup): void {
+    this.character.disciplines = disciplines;
+    this.charCreatorService.character = this.character;
+  }
 }
