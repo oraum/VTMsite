@@ -69,46 +69,92 @@ export abstract class PointsService {
   }
 
   pointSelection(points: number, group: NamedPointsGroup, value: NamedPoints): NamedPointsGroup | null {
+    if (value.editable === false) {
+      return null;
+    }
     const availablePoints = group.availablePoints;
     const grpPoints = PointsService.pointsToNumber(value.points);
     const diff = points - grpPoints;
     if (diff > 0) {
       // increase
-      if (diff <= availablePoints && value.editable !== false) {
-        value.points = value.points.map((pt, index) => {
-          if (index < points && pt === Point.None) {
-            return Point.Original;
-          } else {
-            return pt;
-          }
-        });
+      if (this.freebieService.freebieModeActive) {
+        if (group.freebieCost !== undefined && group.freebieCost * diff <= this.freebieService.points) {
+          value.points = value.points.map((pt, index) => {
+            if (index < points && pt === Point.None) {
+              return Point.Freebie;
+            } else {
+              return pt;
+            }
+          });
+          this.freebieService.points = this.freebieService.points - group.freebieCost * diff;
+        } else {
+          // tried to spend more points than available - aborting
+          return null;
+        }
       } else {
-        // tried to spend more points than available - aborting
-        return null;
+        if (diff <= availablePoints) {
+          value.points = value.points.map((pt, index) => {
+            if (index < points && pt === Point.None) {
+              return Point.Original;
+            } else {
+              return pt;
+            }
+          });
+        } else {
+          // tried to spend more points than available - aborting
+          return null;
+        }
       }
     } else {
       // decrease
-      if (points >= (group.minPoints ?? 0)) {
-        if (points === grpPoints && points === 1 && (group.minPoints ?? 0) === 0) {
-          // special case to deselect the only point given
-          value.points = this.getDefaultPoints();
-          group.availablePoints += 1;
-        } else {
-          value.points = value.points.map((pt, index) => {
-            if (index < points) {
-              return pt;
-            } else {
-              return Point.None;
+      if (this.freebieService.freebieModeActive) {
+        if (value.points[points - 1] !== Point.None) {
+          if (points === grpPoints && points === 1) {
+            // special case to deselect the only point given
+            value.points = this.getDefaultPoints();
+            if (points > (group.minPoints ?? 0)) {
+              this.freebieService.points += (group.freebieCost ?? 0);
             }
-          });
+          } else {
+            let ptsChanged = 0;
+            value.points = value.points.map((pt, index) => {
+              if (index < points || pt === Point.Original) {
+                return pt;
+              } else {
+                ptsChanged += 1;
+                return Point.None;
+              }
+            });
+            if (ptsChanged > Math.abs(diff)) {
+              ptsChanged = Math.abs(diff);
+            }
+            this.freebieService.points += (ptsChanged) * (group.freebieCost ?? 0);
+          }
         }
       } else {
-        // tried to set less than base points which should not be possible, use basePoints instead
-        return null;
+        if (points >= (group.minPoints ?? 0)) {
+          if (points === grpPoints && points === 1 && (group.minPoints ?? 0) === 0) {
+            // special case to deselect the only point given
+            value.points = this.getDefaultPoints();
+            group.availablePoints += 1;
+          } else {
+            value.points = value.points.map((pt, index) => {
+              if (index < points) {
+                return pt;
+              } else {
+                return Point.None;
+              }
+            });
+          }
+        } else {
+          // tried to set less than base points which should not be possible, use basePoints instead
+          return null;
+        }
       }
     }
-
-    group.availablePoints -= diff;
+    if (!this.freebieService.freebieModeActive) {
+      group.availablePoints -= diff;
+    }
     return group;
   }
 }

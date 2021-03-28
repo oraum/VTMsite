@@ -33,7 +33,7 @@ export class AbilitiesService extends PointsService {
       }, {name: 'Streetwise', points: this.getDefaultPoints()}, {name: 'Subterfuge', points: this.getDefaultPoints()},
         {name: 'talents-freetext', points: this.getDefaultPoints(), type: 'freetext'}],
       priority: undefined,
-      availablePoints: -1,
+      availablePoints: -1, freebieCost: 2
     },
     {
       name: 'Skills',
@@ -52,7 +52,7 @@ export class AbilitiesService extends PointsService {
       }, {name: 'Stealth', points: this.getDefaultPoints()}, {name: 'Survival', points: this.getDefaultPoints()},
         {name: 'skills-freetext', points: this.getDefaultPoints(), type: 'freetext'}],
       priority: undefined,
-      availablePoints: -1,
+      availablePoints: -1, freebieCost: 2
     },
     {
       name: 'Knowledge',
@@ -74,7 +74,7 @@ export class AbilitiesService extends PointsService {
         type: 'freetext'
       }],
       priority: undefined,
-      availablePoints: -1,
+      availablePoints: -1, freebieCost: 2
     },
   ];
 

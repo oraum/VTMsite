@@ -16,7 +16,7 @@ import {FreebiesService} from '../freebies/freebies.service';
         </mat-select>
       </mat-form-field>
     </div>
-    <app-point-selection [points]="path.points" [disabled]="!freebieService.freebieModeActive"></app-point-selection>
+    <app-point-selection [points]="path.points" [disabled]="true"></app-point-selection>
   `,
   styles: [`
     div {

@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
 import {NamedPoints, NamedPointsGroup, Point} from '../points.service';
 import {Clan} from '../clan-selection/clan.service';
+import {FreebiesService} from '../freebies/freebies.service';
 
 @Component({
   selector: 'app-character-creator',
@@ -26,12 +27,19 @@ export class CharacterCreatorComponent {
 
   character: Character;
 
-  constructor(public charCreatorService: CharCreatorService) {
+  constructor(public charCreatorService: CharCreatorService, private freebieService: FreebiesService) {
     this.character = this.charCreatorService.character;
     this.characterForm.patchValue(this.character);
 
+    this.freebieService.points = this.character.freebiePoints;
+
     this.characterForm.valueChanges.pipe(debounceTime(300)).subscribe(value => {
       charCreatorService.saveCharacter(value);
+    });
+
+    freebieService.pointsChange.subscribe(value => {
+      this.character.freebiePoints = value;
+      this.charCreatorService.character = this.character;
     });
   }
 
@@ -43,7 +51,7 @@ export class CharacterCreatorComponent {
     this.character.clanBloodline = clan.name;
     this.character.disciplines = {
       name: 'disciplines',
-      availablePoints: 3,
+      availablePoints: 3, freebieCost: 7,
       values: clan.disciplines.map(value => ({name: value, points: [Point.None, Point.None, Point.None, Point.None, Point.None]}))
     };
     this.charCreatorService.character = this.character;

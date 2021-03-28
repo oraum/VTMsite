@@ -21,6 +21,7 @@ import {BackgroundsComponent} from '../backgrounds/backgrounds.component';
 import {VirtuesComponent} from '../virtues/virtues.component';
 import {PrioritySelectionComponent} from '../priority-selection/priority-selection.component';
 import {PathComponent} from '../path/path.component';
+import {WillpowerComponent} from '../willpower/willpower.component';
 
 describe('CharacterCreatorComponent', () => {
   let component: CharacterCreatorComponent;
@@ -31,7 +32,7 @@ describe('CharacterCreatorComponent', () => {
       declarations: [CharacterCreatorComponent, ClanSelectionComponent, CharAttributesComponent, CharAbilitiesComponent,
         PrioritizedPointSelectionGroupComponent, PointSelectionGroupComponent, PointSelectionComponent, MatIcon, FreebiesComponent,
         DisciplinesComponent, BackgroundsComponent, VirtuesComponent, PrioritySelectionComponent, FreetextValueInputComponent,
-        PathComponent],
+        PathComponent, WillpowerComponent],
       imports: [MatSelectModule, MatOptionModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule, MatIconTestingModule,
         ReactiveFormsModule]
     })

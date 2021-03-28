@@ -7,7 +7,12 @@ import {FreebiesService} from '../freebies/freebies.service';
 })
 export class BackgroundsService extends PointsService {
 
-  defaultGroups: NamedPointsGroup[] = [{name: 'backgrounds', availablePoints: 5, values: [{name: 'b0', points: this.getDefaultPoints()}]}];
+  defaultGroups: NamedPointsGroup[] = [{
+    name: 'backgrounds',
+    availablePoints: 5,
+    values: [{name: 'b0', points: this.getDefaultPoints()}],
+    freebieCost: 1
+  }];
   priorities: Priority[] = [];
 
   backgroundList = ['', 'Allies', 'Alternate Identity', 'Black Hand Membership',

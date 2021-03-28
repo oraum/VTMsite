@@ -25,16 +25,20 @@ export class WillpowerComponent implements OnChanges {
       name: 'willpower',
       points: [Point.Original, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None]
     };
+    this.savedWillpower = {
+      name: 'willpower',
+      points: [Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None]
+    };
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('savedVirtues' in changes && changes.savedVirtues.currentValue !== undefined) {
-      const points = [...changes.savedVirtues.currentValue.values[2].points,
-        ...this.willpower.points.filter((p: Point) => (p !== Point.Original))];
+      const points = [...changes.savedVirtues.currentValue.values[2].points.filter((p: Point) => (p === Point.Original)),
+        ...this.savedWillpower?.points ?? []];
       this.willpower.points = points.sort(PathService.pointSortFn).slice(0, 10);
     }
     if ('savedWillpower' in changes && changes.savedWillpower.currentValue !== undefined) {
-      this.willpower = changes.savedWillpower.currentValue;
+      // this.willpower = changes.savedWillpower.currentValue;
     }
   }
 }

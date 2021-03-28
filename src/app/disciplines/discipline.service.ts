@@ -16,7 +16,7 @@ export class DisciplineService extends PointsService {
     'Thaumaturgy', 'Valeren', 'Vicissitude', 'Visceratika'];
   defaultGroups: NamedPointsGroup[] = [{
     name: 'disciplines',
-    availablePoints: 3,
+    availablePoints: 3, freebieCost: 7,
     values: [{name: 'dummy', points: [Point.None, Point.None, Point.None, Point.None, Point.None]}]
   }];
   priorities = [];

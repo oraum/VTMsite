@@ -12,7 +12,7 @@ export class VirtuesService extends PointsService {
       {name: 'Conscience/Conviction', points: this.getDefaultPoints()},
       {name: 'Self-Control/Instinct', points: this.getDefaultPoints()},
       {name: 'Courage', points: this.getDefaultPoints()}
-    ]
+    ], freebieCost: 2, minPoints: 1
   }];
   priorities = [];
 

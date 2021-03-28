@@ -27,6 +27,15 @@ import {DisciplineService} from './discipline.service';
       </div>
     </div>
   `,
+  /*animations: [
+    trigger('InsertRemoveTrigger', [
+      transition(':enter', useAnimation(defaultFadeIn)),
+      transition(':leave', useAnimation(defaultFadeOut))
+    ]),
+    trigger('list', [
+      transition(':enter', query('@InsertRemoveTrigger', stagger(100, animateChild()))),
+    ])
+  ],*/
   styles: [`
     .rows {
       display: flex;
@@ -48,7 +57,7 @@ import {DisciplineService} from './discipline.service';
     }
   `],
 })
-export class DisciplinesComponent implements AfterViewInit {
+export class DisciplinesComponent {
   @Input()
   disciplines: NamedPointsGroup | undefined = undefined;
 
@@ -56,6 +65,7 @@ export class DisciplinesComponent implements AfterViewInit {
   disciplinesChanged = new EventEmitter<NamedPointsGroup>();
 
   constructor(public freebieService: FreebiesService, public disciplineService: DisciplineService) {
+    this.disciplines = this.disciplineService.defaultGroups[0];
   }
 
   pointsClicked(event: PointsClickedEvent): void {
@@ -67,12 +77,6 @@ export class DisciplinesComponent implements AfterViewInit {
 
   npTrackFn(index: number, item: NamedPoints): string {
     return `${item.name}${item.points}`;
-  }
-
-  ngAfterViewInit(): void {
-    if (this.disciplines === undefined) {
-      this.disciplines = this.disciplineService.defaultGroups[0];
-    }
   }
 
 }
