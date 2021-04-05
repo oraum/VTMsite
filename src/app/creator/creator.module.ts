@@ -23,6 +23,7 @@ import {BackgroundsComponent} from '../backgrounds/backgrounds.component';
 import {VirtuesComponent} from '../virtues/virtues.component';
 import {PathComponent} from '../path/path.component';
 import {WillpowerComponent} from '../willpower/willpower.component';
+import {MeritFlawComponent} from '../merit-flaw/merit-flaw.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {WillpowerComponent} from '../willpower/willpower.component';
     BackgroundsComponent,
     VirtuesComponent,
     PathComponent,
-    WillpowerComponent
+    WillpowerComponent,
+    MeritFlawComponent
   ],
   imports: [
     CommonModule,

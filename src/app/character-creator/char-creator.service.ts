@@ -69,6 +69,7 @@ export interface Character {
   virtues?: NamedPointsGroup;
   path?: NamedPoints;
   willpower?: NamedPoints;
+  meritFlaws?: NamedPointsGroup[];
   freebiePoints: number;
   availablePoints?: number;
 }

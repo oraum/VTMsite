@@ -91,4 +91,9 @@ export class CharacterCreatorComponent {
     this.character.willpower = willpower;
     this.charCreatorService.character = this.character;
   }
+
+  updateMeritFlaws(mfs: NamedPointsGroup[]): void {
+    this.character.meritFlaws = mfs;
+    this.charCreatorService.character = this.character;
+  }
 }

@@ -72,4 +72,7 @@
             [savedVirtues]="character.virtues"></app-path>
   <app-willpower (willpowerChanged)="updateWillpower($event)" [savedVirtues]="character.virtues"
                  [savedWillpower]="character.willpower"></app-willpower>
+
+  <app-merit-flaw (meritFlawsChanged)="updateMeritFlaws($event)"
+                  [savedMeritFlaws]="character.meritFlaws"></app-merit-flaw>
 </div>
