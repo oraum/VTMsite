@@ -121,7 +121,9 @@ export abstract class PointsService {
               if (index < points || pt === Point.Original) {
                 return pt;
               } else {
-                ptsChanged += 1;
+                if (pt === Point.Freebie) {
+                  ptsChanged += 1;
+                }
                 return Point.None;
               }
             });

@@ -86,4 +86,9 @@ export class CharacterCreatorComponent {
     this.character.disciplines = disciplines;
     this.charCreatorService.character = this.character;
   }
+
+  updateWillpower(willpower: NamedPoints): void {
+    this.character.willpower = willpower;
+    this.charCreatorService.character = this.character;
+  }
 }

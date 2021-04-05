@@ -1,18 +1,20 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import {NamedPoints, NamedPointsGroup, Point} from '../points.service';
-import {PathService} from '../path/path.service';
+import {NamedPoints, NamedPointsGroup} from '../points.service';
 import {FreebiesService} from '../freebies/freebies.service';
+import {WillpowerService} from './willpower.service';
+import {PointsClickedEvent} from '../point-selection-group/point-selection-group.component';
 
 @Component({
   selector: 'app-willpower',
   template: `
     <h2 class="mat-h2">Willpower</h2>
-    <app-point-selection [points]="willpower.points" [disabled]="!freebieService.freebieModeActive"></app-point-selection>
+    <app-point-selection [points]="willpower.values[0].points" [disabled]="!freebieService.freebieModeActive"
+                         (pointsClicked)="pointsClicked({amount: $event, group: willpower, value: willpower.values[0]})"></app-point-selection>
   `,
   styles: []
 })
 export class WillpowerComponent implements OnChanges {
-  willpower: NamedPoints;
+  willpower: NamedPointsGroup;
   @Input()
   savedVirtues: NamedPointsGroup | undefined = undefined;
   @Input()
@@ -20,25 +22,18 @@ export class WillpowerComponent implements OnChanges {
 
   @Output() willpowerChanged = new EventEmitter<NamedPoints>();
 
-  constructor(public freebieService: FreebiesService) {
-    this.willpower = {
-      name: 'willpower',
-      points: [Point.Original, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None]
-    };
-    this.savedWillpower = {
-      name: 'willpower',
-      points: [Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None]
-    };
+  constructor(public willpowerService: WillpowerService, public freebieService: FreebiesService) {
+    this.willpower = willpowerService.defaultGroups[0];
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if ('savedVirtues' in changes && changes.savedVirtues.currentValue !== undefined) {
-      const points = [...changes.savedVirtues.currentValue.values[2].points.filter((p: Point) => (p === Point.Original)),
-        ...this.savedWillpower?.points ?? []];
-      this.willpower.points = points.sort(PathService.pointSortFn).slice(0, 10);
-    }
-    if ('savedWillpower' in changes && changes.savedWillpower.currentValue !== undefined) {
-      // this.willpower = changes.savedWillpower.currentValue;
+    this.willpower.values[0].points = this.willpowerService.mergePoints(this.savedWillpower, this.savedVirtues?.values[2]);
+  }
+
+  pointsClicked(event: PointsClickedEvent): void {
+    const newGroup = this.willpowerService.pointSelection(event.amount, event.group, event.value);
+    if (newGroup !== null) {
+      this.willpowerChanged.emit(newGroup.values[0]);
     }
   }
 }

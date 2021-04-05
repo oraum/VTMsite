@@ -70,5 +70,6 @@
   <app-virtues (virtuesChanged)="updateVirtues($event)" [savedVirtues]="character.virtues"></app-virtues>
   <app-path (pathChanged)="updatePath($event)" [savedPath]="character.path"
             [savedVirtues]="character.virtues"></app-path>
-  <app-willpower [savedVirtues]="character.virtues"></app-willpower>
+  <app-willpower (willpowerChanged)="updateWillpower($event)" [savedVirtues]="character.virtues"
+                 [savedWillpower]="character.willpower"></app-willpower>
 </div>

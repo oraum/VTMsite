@@ -186,6 +186,19 @@ describe('PointsService', () => {
         expect(PointsService.pointsToNumber(value.points)).toEqual(1);
         expect(value.points).toEqual([Point.Original, Point.None, Point.None]);
       });
+
+      it('should not only add points according to changes', () => {
+        const value: NamedPoints = {name: 'test', points: [Point.Original, Point.Original, Point.Original, Point.Freebie, Point.None]};
+        const grp: NamedPointsGroup = {name: 'testgrp', values: [value], availablePoints: 0, freebieCost: 5, minPoints: 1};
+        service.getDefaultPoints = () => ([Point.Original, Point.None, Point.None]);
+        expect(freebiesService.points).toEqual(15);
+        service.pointSelection(1, grp, value);
+        service.pointSelection(1, grp, value);
+        expect(grp.availablePoints).toEqual(0);
+        expect(freebiesService.points).toEqual(20);
+        expect(PointsService.pointsToNumber(value.points)).toEqual(3);
+        expect(value.points).toEqual([Point.Original, Point.Original, Point.Original, Point.None, Point.None]);
+      });
     });
   });
 
