@@ -14,11 +14,6 @@ describe('CharCreatorService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should have generations', () => {
-    expect(service.generations).toBeTruthy();
-    expect(service.generations.length > 0).toBeTrue();
-  });
-
   it('should have a natureDemeanorList', () => {
     expect(service.natureDemeanorList).toBeTruthy();
     expect(service.natureDemeanorList.length > 0).toBeTrue();

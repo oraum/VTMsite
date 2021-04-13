@@ -6,9 +6,6 @@ import {NamedPoints, NamedPointsGroup} from '../points.service';
 })
 export class CharCreatorService {
 
-  public generations: string[] = ['3rd', '4th', '5th', '6th', '7th',
-    '8th', '9th', '10th', '11th', '12th',
-    '13th', '14th', '15th'];
   public natureDemeanorList: string[] = ['Architect', 'Autocrat', 'Bon Vivant',
     'Bravo', 'Capitalist', 'Caregiver',
     'Celebrant', 'Chameleon', 'Child',
