@@ -37,7 +37,7 @@ export class MeritFlawService extends PointsService {
       name: 'Enchanting Voice (2pt)',
       cost: 2
     }, {name: 'Daredevil (3pt)', cost: 3}, {name: 'Efficient Digestion (3pt)', cost: 3}, {name: 'Huge Size (4pt)', cost: 4}],
-    'Physical Flaws': [{name: 'Hard of Hearing (1pt)', cost: -1}, {name: 'Short (1pt)', cost: -1}, {
+    'Physical Flaws': [{name: '', cost: 0}, {name: 'Hard of Hearing (1pt)', cost: -1}, {name: 'Short (1pt)', cost: -1}, {
       name: 'Smell of the Grave (1pt)',
       cost: -1
     },

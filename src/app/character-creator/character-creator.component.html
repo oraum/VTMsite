@@ -48,7 +48,7 @@
       <mat-form-field>
         <mat-label>Generation</mat-label>
         <mat-select formControlName="generation">
-          <mat-option *ngFor="let generation of charCreatorService.generations" [value]="generation">
+          <mat-option *ngFor="let generation of generationService.generations" [value]="generation">
             {{generation}}
           </mat-option>
         </mat-select>

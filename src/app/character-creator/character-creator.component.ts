@@ -5,6 +5,7 @@ import {debounceTime} from 'rxjs/operators';
 import {NamedPoints, NamedPointsGroup, Point} from '../points.service';
 import {Clan} from '../clan-selection/clan.service';
 import {FreebiesService} from '../freebies/freebies.service';
+import {GenerationService} from '../generation/generation.service';
 
 @Component({
   selector: 'app-character-creator',
@@ -22,14 +23,18 @@ export class CharacterCreatorComponent {
     nature: new FormControl(),
     demeanor: new FormControl(),
     sire: new FormControl(),
-    generation: new FormControl(this.getDefaultGeneration()),
+    generation: new FormControl({value: this.getDefaultGeneration(), disabled: true}),
   });
 
   character: Character;
 
-  constructor(public charCreatorService: CharCreatorService, private freebieService: FreebiesService) {
+  constructor(public charCreatorService: CharCreatorService, private freebieService: FreebiesService,
+              public generationService: GenerationService) {
     this.character = this.charCreatorService.character;
     this.characterForm.patchValue(this.character);
+    if (this.character.generation !== undefined) {
+      this.generationService.generation = this.character.generation;
+    }
 
     this.freebieService.points = this.character.freebiePoints;
 
@@ -41,10 +46,14 @@ export class CharacterCreatorComponent {
       this.character.freebiePoints = value;
       this.charCreatorService.character = this.character;
     });
+    generationService.getGeneration().subscribe(generation => {
+      this.characterForm.patchValue({generation}, {emitEvent: false});
+      this.character.generation = generation;
+    });
   }
 
   public getDefaultGeneration(): string {
-    return this.charCreatorService.generations[10];
+    return this.generationService.generation;
   }
 
   updateClan(clan: Clan): void {

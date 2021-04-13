@@ -3,6 +3,7 @@ import {FreebiesService} from '../freebies/freebies.service';
 import {NamedPoints, NamedPointsGroup, PointsService} from '../points.service';
 import {MatSelect} from '@angular/material/select';
 import {MeritFlawService} from './merit-flaw.service';
+import {GenerationService} from '../generation/generation.service';
 
 @Component({
   selector: 'app-merit-flaw',
@@ -59,7 +60,8 @@ export class MeritFlawComponent implements OnChanges {
   meritFlaws: NamedPointsGroup[];
 
 
-  constructor(public freebieService: FreebiesService, public meritFlawService: MeritFlawService, private cd: ChangeDetectorRef) {
+  constructor(public freebieService: FreebiesService, public meritFlawService: MeritFlawService, private cd: ChangeDetectorRef,
+              private generationService: GenerationService) {
     this.meritFlaws = meritFlawService.defaultGroups;
   }
 
@@ -70,6 +72,7 @@ export class MeritFlawComponent implements OnChanges {
   }
 
   selectionChange(np: NamedPoints, event: string, select: MatSelect, group: NamedPointsGroup): void {
+    const isGenerationEvent = event.includes('Generation');
     if (group.values.map(value => value.value).includes(event)) {
       // prevent duplicate
       select.writeValue(np.value);
@@ -77,6 +80,13 @@ export class MeritFlawComponent implements OnChanges {
     }
     if (np.value === undefined) {
       // value undefined - initial selection
+
+      // check for generation
+      if (isGenerationEvent && group.values.map(value => value.value).filter(value => value?.includes('Generation')).length > 0) {
+        // only one Generation Flaw allowed
+        select.writeValue(np.value);
+        return;
+      }
       group.values.push({name: 'mf' + group.values.length, points: this.meritFlawService.getDefaultPoints()});
       this.freebieService.points -= this.meritFlawService.options[group.name]?.filter(value => value.name === event)[0].cost ?? 0;
     } else if (event === '') {
@@ -86,6 +96,13 @@ export class MeritFlawComponent implements OnChanges {
         return value;
       });
       this.freebieService.points += this.meritFlawService.options[group.name]?.filter(value => value.name === event)[0].cost ?? 0;
+      if (np.value.includes('Generation')) {
+        this.generationService.flaw = undefined;
+      }
+    }
+    if (isGenerationEvent) {
+      // update flaw in GenerationService
+      this.generationService.flaw = event;
     }
     np.value = event;
     this.meritFlawsChanged.emit(this.meritFlaws);
