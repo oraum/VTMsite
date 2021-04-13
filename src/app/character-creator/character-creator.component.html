@@ -1,0 +1,78 @@
+<div>
+  <h1 class="mat-h1">Character Creator</h1>
+  <div>
+    <form [formGroup]="characterForm">
+      <mat-form-field>
+        <mat-label>Player</mat-label>
+        <input formControlName="player" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Chronicle</mat-label>
+        <input formControlName="chronicle" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Concept</mat-label>
+        <input formControlName="concept" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nature</mat-label>
+        <mat-select formControlName="nature">
+          <mat-option *ngFor="let nature of charCreatorService.natureDemeanorList" [value]="nature">
+            {{nature}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Demeanor</mat-label>
+        <mat-select formControlName="demeanor">
+          <mat-option *ngFor="let demeanor of charCreatorService.natureDemeanorList" [value]="demeanor">
+            {{demeanor}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Sire</mat-label>
+        <input formControlName="sire" matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Generation</mat-label>
+        <mat-select formControlName="generation">
+          <mat-option *ngFor="let generation of charCreatorService.generations" [value]="generation">
+            {{generation}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <app-clan-selection (clanChanged)="updateClan($event)" [clanName]="character.clanBloodline"></app-clan-selection>
+  <app-char-attributes (attributesChanged)="updateAttributes($event)" [clan]="character.clanBloodline"
+                       [savedAttributes]="character.attributes"></app-char-attributes>
+  <app-char-abilities (attributesChanged)="updateAbilities($event)"
+                      [savedAttributes]="character.abilities"></app-char-abilities>
+</div>
+<div>
+  <app-freebies [freebiePoints]="character.freebiePoints"></app-freebies>
+  <app-disciplines (disciplinesChanged)="updateDisciplines($event)"
+                   [disciplines]="character.disciplines"></app-disciplines>
+  <app-backgrounds (backgroundsChanged)="updateBackgrounds($event)"
+                   [savedBackgrounds]="character.backgrounds"></app-backgrounds>
+  <app-virtues (virtuesChanged)="updateVirtues($event)" [savedVirtues]="character.virtues"></app-virtues>
+  <app-path (pathChanged)="updatePath($event)" [savedPath]="character.path"
+            [savedVirtues]="character.virtues"></app-path>
+  <app-willpower (willpowerChanged)="updateWillpower($event)" [savedVirtues]="character.virtues"
+                 [savedWillpower]="character.willpower"></app-willpower>
+
+  <app-merit-flaw (meritFlawsChanged)="updateMeritFlaws($event)"
+                  [savedMeritFlaws]="character.meritFlaws"></app-merit-flaw>
+</div>
