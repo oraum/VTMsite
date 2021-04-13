@@ -9,7 +9,7 @@ import {PathService} from '../path/path.service';
 export class WillpowerService extends PointsService {
 
   defaultGroups: NamedPointsGroup[] = [{
-    name: 'willpower', availablePoints: 0, freebieCost: 2, values: [{
+    name: 'willpower', availablePoints: 0, freebieCost: 1, values: [{
       name: 'willpower',
       points: [Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None, Point.None]
     }],
