@@ -1,6 +1,6 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {FreebiesService} from '../freebies/freebies.service';
-import {NamedPoints, NamedPointsGroup, PointsService} from '../points.service';
+import {NamedPoints, NamedPointsGroup} from '../points.service';
 import {MatSelect} from '@angular/material/select';
 import {MeritFlawService} from './merit-flaw.service';
 import {GenerationService} from '../generation/generation.service';
@@ -87,17 +87,35 @@ export class MeritFlawComponent implements OnChanges {
         select.writeValue(np.value);
         return;
       }
+      const cost = this.meritFlawService.options[group.name]?.filter(value => value.name === event)[0].cost ?? 0;
+      if (cost <= this.freebieService.points) {
+        // player has enough freebie points
+        this.freebieService.points -= cost;
+      } else {
+        select.writeValue(np.value);
+        return;
+      }
       group.values.push({name: 'mf' + group.values.length, points: this.meritFlawService.getDefaultPoints()});
-      this.freebieService.points -= this.meritFlawService.options[group.name]?.filter(value => value.name === event)[0].cost ?? 0;
     } else if (event === '') {
       // remove value
       group.values = group.values.filter(value => value.name !== np.name).map((value, index) => {
         value.name = `mf${index}`;
         return value;
       });
-      this.freebieService.points += this.meritFlawService.options[group.name]?.filter(value => value.name === event)[0].cost ?? 0;
+      this.freebieService.points += this.meritFlawService.options[group.name]?.filter(value => value.name === np.value)[0].cost ?? 0;
       if (np.value.includes('Generation')) {
         this.generationService.flaw = undefined;
+      }
+    } else if (event !== np.value) {
+      // value changes update freebie points
+      const option = this.meritFlawService.options[group.name];
+      const refund = option?.filter(value => value.name === np.value)[0].cost ?? 0;
+      const cost = option?.filter(value => value.name === event)[0].cost ?? 0;
+      if ((cost - refund) < this.freebieService.points) {
+        this.freebieService.points -= (cost - refund);
+      } else {
+        select.writeValue(np.value);
+        return;
       }
     }
     if (isGenerationEvent) {
