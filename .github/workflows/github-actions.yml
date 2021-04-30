@@ -27,4 +27,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build --prod
-    - run: npm run test -- --watch=false --code-coverage
+    - run: npm run test -- --watch=false --code-coverage --browsers=ChromeHeadless
