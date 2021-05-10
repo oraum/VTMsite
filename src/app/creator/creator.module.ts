@@ -24,6 +24,9 @@ import {VirtuesComponent} from '../virtues/virtues.component';
 import {PathComponent} from '../path/path.component';
 import {WillpowerComponent} from '../willpower/willpower.component';
 import {MeritFlawComponent} from '../merit-flaw/merit-flaw.component';
+import {ImportExportComponent} from '../import-export/import-export.component';
+import {SaveButtonComponent} from '../save-button/save-button.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -43,7 +46,9 @@ import {MeritFlawComponent} from '../merit-flaw/merit-flaw.component';
     VirtuesComponent,
     PathComponent,
     WillpowerComponent,
-    MeritFlawComponent
+    MeritFlawComponent,
+    ImportExportComponent,
+    SaveButtonComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +59,8 @@ import {MeritFlawComponent} from '../merit-flaw/merit-flaw.component';
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ]
 })
 export class CreatorModule {
