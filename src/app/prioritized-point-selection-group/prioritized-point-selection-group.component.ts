@@ -76,7 +76,7 @@ export class PrioritizedPointSelectionGroupComponent {
   }
 
   groupTrackFn(index: number, item: NamedPointsGroup): string {
-    return `${item.name}`;
+    return `${item.name}-${item.availablePoints}`;
   }
 
   changeFreeText(event: FreeTextChangedEvent): void {

@@ -14,7 +14,7 @@ export abstract class PointsService {
    */
   abstract defaultGroups: NamedPointsGroup[];
 
-  constructor(private freebieService: FreebiesService) {
+  constructor(protected freebieService: FreebiesService) {
   }
 
   static pointsToNumber(points: Point[]): number {

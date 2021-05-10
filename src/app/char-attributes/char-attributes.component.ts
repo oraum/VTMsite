@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {AttributesService} from './attributes.service';
 import {NamedPoints, NamedPointsGroup, Point} from '../points.service';
 
@@ -28,8 +28,13 @@ export class CharAttributesComponent implements OnChanges {
 
   groups: NamedPointsGroup[];
 
-  constructor(public attributeService: AttributesService) {
+  constructor(public attributeService: AttributesService, private cd: ChangeDetectorRef) {
     this.groups = this.attributeService.defaultGroups;
+
+    this.attributeService.flawChangeEvent.subscribe(() => {
+      this.groups = this.attributeService.checkFlaws(this.groups);
+      this.attributesChanged.emit(this.groups);
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {

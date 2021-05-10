@@ -201,6 +201,8 @@ export class MeritFlawService extends PointsService {
     }, {name: 'Light-Sensitive (5pt)', cost: -5}],
   };
 
+  appearanceFlaws = ['Monstrous (3pt)', 'Permanent Fangs (3pt)', 'Disfigured (2pt)'];
+
   constructor(freebieService: FreebiesService) {
     super(freebieService);
   }
