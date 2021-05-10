@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FreebiesService} from './freebies.service';
 
 @Component({
@@ -7,7 +7,9 @@ import {FreebiesService} from './freebies.service';
     <p>
       Freebie Points: {{freebiePoints}}
     </p>
-    <button mat-flat-button (click)="freebieService.toggleFreebieMode()">Toggle Freebie Mode</button>
+    <button mat-flat-button (click)="freebieService.toggleFreebieMode()" [color]="freebieService.freebieModeActive?'warn':undefined">Toggle
+      Freebie Mode
+    </button>
   `,
   styles: []
 })
