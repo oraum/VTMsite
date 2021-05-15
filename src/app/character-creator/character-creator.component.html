@@ -1,5 +1,9 @@
 <div>
-  <h1 class="mat-h1">Character Creator</h1>
+  <div class="header">
+    <h1 class="mat-h1">Character Creator</h1>
+    <span></span>
+    <app-save-button (characterImported)="characterImported($event)" [character]="character"></app-save-button>
+  </div>
   <div>
     <form [formGroup]="characterForm">
       <mat-form-field>

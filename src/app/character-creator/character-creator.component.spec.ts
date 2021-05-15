@@ -23,6 +23,8 @@ import {PrioritySelectionComponent} from '../priority-selection/priority-selecti
 import {PathComponent} from '../path/path.component';
 import {WillpowerComponent} from '../willpower/willpower.component';
 import {MeritFlawComponent} from '../merit-flaw/merit-flaw.component';
+import {SaveButtonComponent} from '../save-button/save-button.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 describe('CharacterCreatorComponent', () => {
   let component: CharacterCreatorComponent;
@@ -33,9 +35,9 @@ describe('CharacterCreatorComponent', () => {
       declarations: [CharacterCreatorComponent, ClanSelectionComponent, CharAttributesComponent, CharAbilitiesComponent,
         PrioritizedPointSelectionGroupComponent, PointSelectionGroupComponent, PointSelectionComponent, MatIcon, FreebiesComponent,
         DisciplinesComponent, BackgroundsComponent, VirtuesComponent, PrioritySelectionComponent, FreetextValueInputComponent,
-        PathComponent, WillpowerComponent, MeritFlawComponent],
+        PathComponent, WillpowerComponent, MeritFlawComponent, SaveButtonComponent],
       imports: [MatSelectModule, MatOptionModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule, MatIconTestingModule,
-        ReactiveFormsModule]
+        ReactiveFormsModule, MatDialogModule]
     })
       .compileComponents();
   });

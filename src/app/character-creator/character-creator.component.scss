@@ -31,3 +31,12 @@ h1 {
   display: flex;
   flex-wrap: wrap;
 }
+
+.header {
+  display: flex;
+
+}
+
+.header span {
+  flex-grow: 1;
+}

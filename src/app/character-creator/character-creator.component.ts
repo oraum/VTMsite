@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
 import {Character, CharCreatorService} from './char-creator.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {debounceTime} from 'rxjs/operators';
@@ -29,7 +29,7 @@ export class CharacterCreatorComponent {
   character: Character;
 
   constructor(public charCreatorService: CharCreatorService, private freebieService: FreebiesService,
-              public generationService: GenerationService) {
+              public generationService: GenerationService, private cd: ChangeDetectorRef) {
     this.character = this.charCreatorService.character;
     this.characterForm.patchValue(this.character);
     if (this.character.generation !== undefined) {
@@ -104,5 +104,12 @@ export class CharacterCreatorComponent {
   updateMeritFlaws(mfs: NamedPointsGroup[]): void {
     this.character.meritFlaws = mfs;
     this.charCreatorService.character = this.character;
+  }
+
+  characterImported(character: Character): void {
+    this.character = character;
+    this.charCreatorService.character = this.character;
+    this.characterForm.patchValue(this.character);
+    this.cd.markForCheck();
   }
 }
