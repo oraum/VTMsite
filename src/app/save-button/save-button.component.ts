@@ -25,10 +25,13 @@ export class SaveButtonComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(ImportExportComponent, {
       data: this.character,
-      width: '50em',
     });
 
-    dialogRef.afterClosed().subscribe(value => this.characterImported.emit(value));
+    dialogRef.afterClosed().subscribe(value => {
+      if (value !== '') {
+        this.characterImported.emit(value);
+      }
+    });
   }
 
 }

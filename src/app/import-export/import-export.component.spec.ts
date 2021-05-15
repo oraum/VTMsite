@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ImportExportComponent} from './import-export.component';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 describe('ImportExportComponent', () => {
   let component: ImportExportComponent;
@@ -11,7 +12,7 @@ describe('ImportExportComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ImportExportComponent],
-      imports: [MatDialogModule, ReactiveFormsModule],
+      imports: [MatDialogModule, ReactiveFormsModule, MatTooltipModule],
       providers: [{provide: MAT_DIALOG_DATA, useValue: {}}, {provide: MatDialogRef, useValue: {}}]
     })
       .compileComponents();

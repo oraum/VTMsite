@@ -27,6 +27,7 @@ import {MeritFlawComponent} from '../merit-flaw/merit-flaw.component';
 import {ImportExportComponent} from '../import-export/import-export.component';
 import {SaveButtonComponent} from '../save-button/save-button.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatOptionModule,
     MatSelectModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ]
 })
 export class CreatorModule {
