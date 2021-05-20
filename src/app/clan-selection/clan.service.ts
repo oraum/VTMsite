@@ -59,126 +59,131 @@ export class ClanService {
       disciplines: ['Bardo', '2 other disciplines learned from original clan']
     },
     {
-      id: 9, name: 'Daughters of Cacophony',
+      id: 9, name: 'City Gangrel',
+      filters: ['Sabbat', 'All Clans', 'Sabbat (clans only)',],
+      disciplines: ['Celerity', 'Obfuscate', 'Protean']
+    },
+    {
+      id: 10, name: 'Daughters of Cacophony',
       filters: ['All Bloodlines'],
       disciplines: ['Fortitude', 'Melpominee', 'Presence']
     },
     {
-      id: 10, name: 'Followers of Set',
+      id: 11, name: 'Followers of Set',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Dark Ages',
         'Low Clans'],
       disciplines: ['Obfuscate', 'Presence', 'Serpentis']
     },
     {
-      id: 11, name: 'Gargoyles',
+      id: 12, name: 'Gargoyles',
       filters: ['All Bloodlines'],
       disciplines: ['Flight', 'Fortitude', 'Potence', 'Visceratika']
     },
     {
-      id: 12, name: 'Gangrel',
+      id: 13, name: 'Gangrel',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Low Clans',
         'Dark Ages'],
       disciplines: ['Animalism', 'Fortitude', 'Protean']
     },
     {
-      id: 13, name: 'Giovanni',
+      id: 14, name: 'Giovanni',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Dark Ages'],
       disciplines: ['Dominate', 'Necromancy', 'Potence']
     },
     {
-      id: 14, name: 'Harbingers of Skulls',
+      id: 15, name: 'Harbingers of Skulls',
       filters: ['Sabbat', 'All Bloodlines'],
       disciplines: ['Auspex', 'Fortitude', 'Necromancy']
     },
     {
-      id: 15, name: 'Kiasyd',
+      id: 16, name: 'Kiasyd',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Dominate', 'Obtenebration', 'Mytherceria']
     },
     {
-      id: 16, name: 'Lamia',
+      id: 17, name: 'Lamia',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Fortitude', 'Necromancy', 'Potence']
     },
     {
-      id: 17, name: 'Lasombra',
+      id: 18, name: 'Lasombra',
       filters: ['Thirteen', 'Sabbat', 'All Clans', 'Sabbat (clans only)',
         'Dark Ages', 'High Clans'],
       disciplines: ['Dominate', 'Obtenebration', 'Potence']
     },
     {
-      id: 18, name: 'Lhiannan',
+      id: 19, name: 'Lhiannan',
       filters: ['Independent', 'All Bloodlines', 'Dark Ages'],
       disciplines: ['Animalism', 'Ogham', 'Presence']
     },
     {
-      id: 19, name: 'Malkavian',
+      id: 20, name: 'Malkavian',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'Low Clans'],
       disciplines: ['Auspex', 'Dementation', 'Obfuscate']
     },
     {
-      id: 20, name: 'Nagaraja',
+      id: 21, name: 'Nagaraja',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Auspex', 'Dominate', 'Necromancy']
     },
     {
-      id: 21, name: 'Noiad',
+      id: 22, name: 'Noiad',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Animalism', 'Auspex', 'Protean']
     },
     {
-      id: 22, name: 'Nosferatu',
+      id: 23, name: 'Nosferatu',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'Low Clans'],
       disciplines: ['Animalism', 'Obfuscate', 'Potence']
     },
     {
-      id: 23, name: 'Old Clan Tzimisce',
+      id: 24, name: 'Old Clan Tzimisce',
       filters: ['Dark Ages, High Clans'],
       disciplines: ['Animalism', 'Auspex', 'Dominate']
     },
     {
-      id: 24, name: 'Ravnos',
+      id: 25, name: 'Ravnos',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Dark Ages',
         'Low Clans'],
       disciplines: ['Animalism', 'Chimerstry', 'Fortitude']
     },
     {
-      id: 25, name: 'Salubri',
+      id: 26, name: 'Salubri',
       filters: ['Independent', 'All Clans', 'Dark Ages'],
       disciplines: ['Auspex', 'Fortitude', 'Obeah', 'Valeren']
     },
     {
-      id: 26, name: 'Samedi',
+      id: 27, name: 'Samedi',
       filters: ['All Bloodlines'],
       disciplines: ['Fortitude', 'Obfuscate', 'Thanatosis']
     },
     {
-      id: 27, name: 'Toreador',
+      id: 28, name: 'Toreador',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'High Clans'],
       disciplines: ['Auspex', 'Celerity', 'Presence']
     },
     {
-      id: 28, name: 'Tremere',
+      id: 29, name: 'Tremere',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'Low Clans'],
       disciplines: ['Auspex', 'Dominate', 'Thaumaturgy']
     },
     {
-      id: 29, name: 'True Brujah',
+      id: 30, name: 'True Brujah',
       filters: ['All Bloodlines', 'Independent', 'Dark Ages'],
       disciplines: ['Potence', 'Presence', 'Temporis']
     },
     {
-      id: 30, name: 'Tzimisce',
+      id: 31, name: 'Tzimisce',
       filters: ['Thirteen', 'Sabbat', 'All Clans', 'Sabbat (clans only)',
         'Dark Ages', 'High Clans'],
       disciplines: ['Animalism', 'Auspex', 'Vicissitude']
     },
     {
-      id: 31, name: 'Ventrue',
+      id: 32, name: 'Ventrue',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'High Clans'],
       disciplines: ['Dominate', 'Fortitude', 'Presence']
@@ -194,6 +199,7 @@ export class ClanService {
     ['Caitiff', 'Caitiff are vampires with no known clan. It can mean that they were abandoned and therefore do not know their lineage, or that they have no traits of the clan that they were embraced into. Caitiff have no inherent clan disciplines, but they also do not have any clan weakness. They are typically looked down upon by every other type of vampire, whether it\'s with distaste or pity.'],
     ['Cappadocian', 'The Cappadocians, also known as the "Clan of Death". Detached scholars obsessed with the mysteries of death, they are now (theoretically) extinct, having been eliminated through a coup de famille by Augustus Giovanni. Unfortunately for the Giovanni, they may have underestimated what it takes to kill a clan of experts on death. It is said that Cappadocius himself developed their unique discipline, Mortis, which is now known as Necromancy.'],
     ['Children of Osiris', 'The Children of Osiris are a bloodline of vampires who flourished around the second or third millennium BC. The group was founded by Osiris, the \"Resurrected King\". They are known to practice a discipline unlike any other, called Bardo, which allows a vampire to have control over the Beast within. All their members come from other clans, or are Caitiff. Joining their ranks also requires high levels of Humanity.'],
+    ['City Gangrel', 'The City Gangrel are a bloodline of the Gangrel that has adapted to urban environments. In the Dark Ages, the bloodline was known as the Greek Gangrel, as they were thought to have originated in Greece. In the modern nights, the City Gangrel form half of the Gangrel antitribu within the Sabbat.'],
     ['Daughters of Cacophony', 'The Daughters of Cacophony are a bloodline of unknown origin (although the most common guesses are Toreador or Malkavian) to the general vampire population. Currently composed entirely of women, the Daughters practice a unique discipline called Melpominee. This power allows the Daughters to invoke strange effects through singing, and are the choralistes par excellence of the undead, hence their nickname, the "Sirens".'],
     ['Followers of Set', 'The Followers of Set (or Setites) are a clan of vampires who believe their founder was the Egyptian god Set. Orthodox Setite belief dictates that Set will one day return to rule or consume the world, and devout Setites prepare the way for his resurrection. To this end, the clan remains independent of the Sects of other Kindred, and practice with great skill the arts of corruption, deceit and ancient sorcery.'],
     ['Gangrel', 'The Gangrel are one of the thirteen vampire clans found in the Classic World of Darkness, characterized by animalistic features and nature. Nomads who hold closer ties to the wild places than most of their city-bound cousins, they are also closer to the animal aspect of the Beast, and are masters of the Protean discipline.'],
