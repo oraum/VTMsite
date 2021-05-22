@@ -64,126 +64,131 @@ export class ClanService {
       disciplines: ['Celerity', 'Obfuscate', 'Protean']
     },
     {
-      id: 10, name: 'Daughters of Cacophony',
+      id: 10, name: 'Country Gangrel',
+      filters: ['Sabbat', 'All Clans', 'Sabbat (clans only)',],
+      disciplines: ['Animalism', 'Fortitude', 'Protean']
+    },
+    {
+      id: 11, name: 'Daughters of Cacophony',
       filters: ['All Bloodlines'],
       disciplines: ['Fortitude', 'Melpominee', 'Presence']
     },
     {
-      id: 11, name: 'Followers of Set',
+      id: 12, name: 'Followers of Set',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Dark Ages',
         'Low Clans'],
       disciplines: ['Obfuscate', 'Presence', 'Serpentis']
     },
     {
-      id: 12, name: 'Gargoyles',
+      id: 13, name: 'Gargoyles',
       filters: ['All Bloodlines'],
       disciplines: ['Flight', 'Fortitude', 'Potence', 'Visceratika']
     },
     {
-      id: 13, name: 'Gangrel',
+      id: 14, name: 'Gangrel',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Low Clans',
         'Dark Ages'],
       disciplines: ['Animalism', 'Fortitude', 'Protean']
     },
     {
-      id: 14, name: 'Giovanni',
+      id: 15, name: 'Giovanni',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Dark Ages'],
       disciplines: ['Dominate', 'Necromancy', 'Potence']
     },
     {
-      id: 15, name: 'Harbingers of Skulls',
+      id: 16, name: 'Harbingers of Skulls',
       filters: ['Sabbat', 'All Bloodlines'],
       disciplines: ['Auspex', 'Fortitude', 'Necromancy']
     },
     {
-      id: 16, name: 'Kiasyd',
+      id: 17, name: 'Kiasyd',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Dominate', 'Obtenebration', 'Mytherceria']
     },
     {
-      id: 17, name: 'Lamia',
+      id: 18, name: 'Lamia',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Fortitude', 'Necromancy', 'Potence']
     },
     {
-      id: 18, name: 'Lasombra',
+      id: 19, name: 'Lasombra',
       filters: ['Thirteen', 'Sabbat', 'All Clans', 'Sabbat (clans only)',
         'Dark Ages', 'High Clans'],
       disciplines: ['Dominate', 'Obtenebration', 'Potence']
     },
     {
-      id: 19, name: 'Lhiannan',
+      id: 20, name: 'Lhiannan',
       filters: ['Independent', 'All Bloodlines', 'Dark Ages'],
       disciplines: ['Animalism', 'Ogham', 'Presence']
     },
     {
-      id: 20, name: 'Malkavian',
+      id: 21, name: 'Malkavian',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'Low Clans'],
       disciplines: ['Auspex', 'Dementation', 'Obfuscate']
     },
     {
-      id: 21, name: 'Nagaraja',
+      id: 22, name: 'Nagaraja',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Auspex', 'Dominate', 'Necromancy']
     },
     {
-      id: 22, name: 'Noiad',
+      id: 23, name: 'Noiad',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Animalism', 'Auspex', 'Protean']
     },
     {
-      id: 23, name: 'Nosferatu',
+      id: 24, name: 'Nosferatu',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'Low Clans'],
       disciplines: ['Animalism', 'Obfuscate', 'Potence']
     },
     {
-      id: 24, name: 'Old Clan Tzimisce',
+      id: 25, name: 'Old Clan Tzimisce',
       filters: ['Dark Ages, High Clans'],
       disciplines: ['Animalism', 'Auspex', 'Dominate']
     },
     {
-      id: 25, name: 'Ravnos',
+      id: 26, name: 'Ravnos',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Dark Ages',
         'Low Clans'],
       disciplines: ['Animalism', 'Chimerstry', 'Fortitude']
     },
     {
-      id: 26, name: 'Salubri',
+      id: 27, name: 'Salubri',
       filters: ['Independent', 'All Clans', 'Dark Ages'],
       disciplines: ['Auspex', 'Fortitude', 'Obeah', 'Valeren']
     },
     {
-      id: 27, name: 'Samedi',
+      id: 28, name: 'Samedi',
       filters: ['All Bloodlines'],
       disciplines: ['Fortitude', 'Obfuscate', 'Thanatosis']
     },
     {
-      id: 28, name: 'Toreador',
+      id: 29, name: 'Toreador',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'High Clans'],
       disciplines: ['Auspex', 'Celerity', 'Presence']
     },
     {
-      id: 29, name: 'Tremere',
+      id: 30, name: 'Tremere',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'Low Clans'],
       disciplines: ['Auspex', 'Dominate', 'Thaumaturgy']
     },
     {
-      id: 30, name: 'True Brujah',
+      id: 31, name: 'True Brujah',
       filters: ['All Bloodlines', 'Independent', 'Dark Ages'],
       disciplines: ['Potence', 'Presence', 'Temporis']
     },
     {
-      id: 31, name: 'Tzimisce',
+      id: 32, name: 'Tzimisce',
       filters: ['Thirteen', 'Sabbat', 'All Clans', 'Sabbat (clans only)',
         'Dark Ages', 'High Clans'],
       disciplines: ['Animalism', 'Auspex', 'Vicissitude']
     },
     {
-      id: 32, name: 'Ventrue',
+      id: 33, name: 'Ventrue',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'High Clans'],
       disciplines: ['Dominate', 'Fortitude', 'Presence']
@@ -199,7 +204,8 @@ export class ClanService {
     ['Caitiff', 'Caitiff are vampires with no known clan. It can mean that they were abandoned and therefore do not know their lineage, or that they have no traits of the clan that they were embraced into. Caitiff have no inherent clan disciplines, but they also do not have any clan weakness. They are typically looked down upon by every other type of vampire, whether it\'s with distaste or pity.'],
     ['Cappadocian', 'The Cappadocians, also known as the "Clan of Death". Detached scholars obsessed with the mysteries of death, they are now (theoretically) extinct, having been eliminated through a coup de famille by Augustus Giovanni. Unfortunately for the Giovanni, they may have underestimated what it takes to kill a clan of experts on death. It is said that Cappadocius himself developed their unique discipline, Mortis, which is now known as Necromancy.'],
     ['Children of Osiris', 'The Children of Osiris are a bloodline of vampires who flourished around the second or third millennium BC. The group was founded by Osiris, the \"Resurrected King\". They are known to practice a discipline unlike any other, called Bardo, which allows a vampire to have control over the Beast within. All their members come from other clans, or are Caitiff. Joining their ranks also requires high levels of Humanity.'],
-    ['City Gangrel', 'The City Gangrel are a bloodline of the Gangrel that has adapted to urban environments. In the Dark Ages, the bloodline was known as the Greek Gangrel, as they were thought to have originated in Greece. In the modern nights, the City Gangrel form half of the Gangrel antitribu within the Sabbat.'],
+    ['City Gangrel', 'The City Gangrel are a bloodline of the Gangrel that has adapted to urban environments. In the Dark Ages, the bloodline was known as the Greek Gangrel, as they were thought to have originated in Greece. In the modern nights, the City Gangrel form half of the Gangrel antitribu within the Sabbat. The City Gangrel remind some Kindred of coyotes — they are creatures well-suited for wilderness life, but they adapt to an urban existence quite smoothly. The high preponderance of prey in the cities, coupled with the Gangrel\'s inherent mutability of blood, has allowed the line to flourish. Their association with the Sabbat means that they Embrace prolifically, but also that their unlife expectancy is short. Unlike Country Gangrel, who can afford to let their animalistic ways take over and their appearances grow truly bestial, the Coyotes must either adopt a more Nosferatu-like approach to unlife or blend in with their prey. To outward appearance, then, these latter Kindred seem human, dress as appropriate to their area and the social class that they mimic. But City Gangrel are still Sabbat vampires, and that means they are predators. Any disguise they adopt is strictly that, camouflage to allow them to get close enough to bite.'],
+    ['Country Gangrel', 'The Country Gangrel resemble the independent and Camarilla Gangrel – they are savage, vicious hunters, more comfortable in the wilds between cities than the concrete jungles. The Sabbat has seen a influx of Gangrel converts from the Camarilla, and these Hunters easily lost themselves in stalking and killing. The Country Gangrel serve the Sabbat as assassins and scouts, using their command of animals to gather intelligence on the comings and goings of other Kindred. They are called Hunters. Travel between cities was never exactly safe, as Lupines seem to prowl any patch of land large enough to grow a few trees (or so Camarilla elders have always told their childer), but with the Hunters prowling about, looking for wayward neonates, itinerant Kindred face even more dire threats. This might sound like Camarilla propaganda, but the Country Gangrel do all they can to make it true. Free from the constraints of having to look human, these creatures relish the chance to hunt as wolves hunt – savagely and in packs. If they have a regret, it is that their prey cannot usually run fast enough to make the hunt last.'],
     ['Daughters of Cacophony', 'The Daughters of Cacophony are a bloodline of unknown origin (although the most common guesses are Toreador or Malkavian) to the general vampire population. Currently composed entirely of women, the Daughters practice a unique discipline called Melpominee. This power allows the Daughters to invoke strange effects through singing, and are the choralistes par excellence of the undead, hence their nickname, the "Sirens".'],
     ['Followers of Set', 'The Followers of Set (or Setites) are a clan of vampires who believe their founder was the Egyptian god Set. Orthodox Setite belief dictates that Set will one day return to rule or consume the world, and devout Setites prepare the way for his resurrection. To this end, the clan remains independent of the Sects of other Kindred, and practice with great skill the arts of corruption, deceit and ancient sorcery.'],
     ['Gangrel', 'The Gangrel are one of the thirteen vampire clans found in the Classic World of Darkness, characterized by animalistic features and nature. Nomads who hold closer ties to the wild places than most of their city-bound cousins, they are also closer to the animal aspect of the Beast, and are masters of the Protean discipline.'],
