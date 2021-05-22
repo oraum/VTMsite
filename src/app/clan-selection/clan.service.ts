@@ -197,6 +197,11 @@ export class ClanService {
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'High Clans'],
       disciplines: ['Dominate', 'Fortitude', 'Presence']
+    },
+    {
+      id: 35, name: 'Ventrue Antitribu',
+      filters: ['Sabbat', 'All Clans', 'Sabbat (clans only)',],
+      disciplines: ['Dominate', 'Fortitude', 'Auspex or Presence']
     }
   ];
   private clanDescriptions: Map<string, string> = new Map([
@@ -234,7 +239,8 @@ export class ClanService {
     ['Tremere', 'The Tremere are one of the main bastions of the Camarilla, and have their own strict structure and order hierarchy within their own clan as well. Practitioners of blood magic known as Thaumaturgy, they have the most magical heritage, as they became Kindred through a magical ritual.'],
     ['True Brujah', 'The True Brujah are a bloodline that are the descendants of the original Antediluvian founder of Clan Brujah and not his diablerist/childe Troile, hence their name. They are noted for their cool, detached behavior, contrary to the main lineage who are known for their short, violent tempers and rebellious attitudes. They control a unique discipline known as Temporis, which gives them the ability to manipulate time itself.'],
     ['Tzimisce', 'The Tzimisce are a clan of scholars and flesh-shapers. The Tzimisce have left the human condition behind gladly, and now focus on transcending the vampiric limitations. Polite, intelligent and inquisitive they seem a stark contrast to the howling Sabbat mobs, however on closer inspection it\'s clear this is a mask hiding something alien and monstrous. Their trademark discipline Vicissitude gives them access to the art of flesh & bone crafting.'],
-    ['Ventrue', 'The Ventrue has long been one of the proudest lines of vampires. Its members work hard to maintain a reputation for honor, genteel behavior, and leadership. A sense of noblesse oblige has long pervaded the clan, accompanied by the genuine belief that the Ventrue know what\'s best for everyone. They consider themselves the oldest clan, and see themselves as the enforcers of tradition and the rightful leaders of Kindred society.']
+    ['Ventrue', 'The Ventrue has long been one of the proudest lines of vampires. Its members work hard to maintain a reputation for honor, genteel behavior, and leadership. A sense of noblesse oblige has long pervaded the clan, accompanied by the genuine belief that the Ventrue know what\'s best for everyone. They consider themselves the oldest clan, and see themselves as the enforcers of tradition and the rightful leaders of Kindred society.'],
+    ['Ventrue Antitribu', 'The Ventrue antitribu are the knights and paladins of the Sabbat, sworn to combat the Antediluvians and bring down the degenerate Camarilla. They see their Camarilla counterparts as failures, and have assumed the roles of the race of Cainites\' saviors to atone for this. They believe mortals to be ignorant cattle, sufficient only for food and service to their terrible vampire lords. To accept anything less is to take the path of the disgraced Ventrue of the Camarilla, and the Sabbat Ventrue are not willing to accept that failure.']
   ]);
 
   public getDescription(clanName: string): string {
