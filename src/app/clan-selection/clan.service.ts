@@ -45,150 +45,155 @@ export class ClanService {
       disciplines: ['Celerity', 'Potence', 'Presence']
     },
     {
-      id: 6, name: 'Caitiff',
+      id: 6, name: 'Brujah Antitribu',
+      filters: ['Sabbat', 'All Clans', 'Sabbat (clans only)',],
+      disciplines: ['Celerity', 'Potence', 'Presence']
+    },
+    {
+      id: 7, name: 'Caitiff',
       filters: ['All Clans', 'Dark Ages'],
       disciplines: []
     }, {
-      id: 7, name: 'Cappadocian',
+      id: 8, name: 'Cappadocian',
       filters: ['All Clans', 'Dark Ages', 'High Clans'],
       disciplines: ['Auspex', 'Fortitude', 'Necromancy']
     },
     {
-      id: 8, name: 'Children of Osiris',
+      id: 9, name: 'Children of Osiris',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Bardo', '2 other disciplines learned from original clan']
     },
     {
-      id: 9, name: 'City Gangrel',
+      id: 10, name: 'City Gangrel',
       filters: ['Sabbat', 'All Clans', 'Sabbat (clans only)',],
       disciplines: ['Celerity', 'Obfuscate', 'Protean']
     },
     {
-      id: 10, name: 'Country Gangrel',
+      id: 11, name: 'Country Gangrel',
       filters: ['Sabbat', 'All Clans', 'Sabbat (clans only)',],
       disciplines: ['Animalism', 'Fortitude', 'Protean']
     },
     {
-      id: 11, name: 'Daughters of Cacophony',
+      id: 12, name: 'Daughters of Cacophony',
       filters: ['All Bloodlines'],
       disciplines: ['Fortitude', 'Melpominee', 'Presence']
     },
     {
-      id: 12, name: 'Followers of Set',
+      id: 13, name: 'Followers of Set',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Dark Ages',
         'Low Clans'],
       disciplines: ['Obfuscate', 'Presence', 'Serpentis']
     },
     {
-      id: 13, name: 'Gargoyles',
+      id: 14, name: 'Gargoyles',
       filters: ['All Bloodlines'],
       disciplines: ['Flight', 'Fortitude', 'Potence', 'Visceratika']
     },
     {
-      id: 14, name: 'Gangrel',
+      id: 15, name: 'Gangrel',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Low Clans',
         'Dark Ages'],
       disciplines: ['Animalism', 'Fortitude', 'Protean']
     },
     {
-      id: 15, name: 'Giovanni',
+      id: 16, name: 'Giovanni',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Dark Ages'],
       disciplines: ['Dominate', 'Necromancy', 'Potence']
     },
     {
-      id: 16, name: 'Harbingers of Skulls',
+      id: 17, name: 'Harbingers of Skulls',
       filters: ['Sabbat', 'All Bloodlines'],
       disciplines: ['Auspex', 'Fortitude', 'Necromancy']
     },
     {
-      id: 17, name: 'Kiasyd',
+      id: 18, name: 'Kiasyd',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Dominate', 'Obtenebration', 'Mytherceria']
     },
     {
-      id: 18, name: 'Lamia',
+      id: 19, name: 'Lamia',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Fortitude', 'Necromancy', 'Potence']
     },
     {
-      id: 19, name: 'Lasombra',
+      id: 20, name: 'Lasombra',
       filters: ['Thirteen', 'Sabbat', 'All Clans', 'Sabbat (clans only)',
         'Dark Ages', 'High Clans'],
       disciplines: ['Dominate', 'Obtenebration', 'Potence']
     },
     {
-      id: 20, name: 'Lhiannan',
+      id: 21, name: 'Lhiannan',
       filters: ['Independent', 'All Bloodlines', 'Dark Ages'],
       disciplines: ['Animalism', 'Ogham', 'Presence']
     },
     {
-      id: 21, name: 'Malkavian',
+      id: 22, name: 'Malkavian',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'Low Clans'],
       disciplines: ['Auspex', 'Dementation', 'Obfuscate']
     },
     {
-      id: 22, name: 'Nagaraja',
+      id: 23, name: 'Nagaraja',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Auspex', 'Dominate', 'Necromancy']
     },
     {
-      id: 23, name: 'Noiad',
+      id: 24, name: 'Noiad',
       filters: ['All Bloodlines', 'Dark Ages'],
       disciplines: ['Animalism', 'Auspex', 'Protean']
     },
     {
-      id: 24, name: 'Nosferatu',
+      id: 25, name: 'Nosferatu',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'Low Clans'],
       disciplines: ['Animalism', 'Obfuscate', 'Potence']
     },
     {
-      id: 25, name: 'Old Clan Tzimisce',
+      id: 26, name: 'Old Clan Tzimisce',
       filters: ['Dark Ages, High Clans'],
       disciplines: ['Animalism', 'Auspex', 'Dominate']
     },
     {
-      id: 26, name: 'Ravnos',
+      id: 27, name: 'Ravnos',
       filters: ['Thirteen', 'Independent', 'All Clans', 'Dark Ages',
         'Low Clans'],
       disciplines: ['Animalism', 'Chimerstry', 'Fortitude']
     },
     {
-      id: 27, name: 'Salubri',
+      id: 28, name: 'Salubri',
       filters: ['Independent', 'All Clans', 'Dark Ages'],
       disciplines: ['Auspex', 'Fortitude', 'Obeah', 'Valeren']
     },
     {
-      id: 28, name: 'Samedi',
+      id: 29, name: 'Samedi',
       filters: ['All Bloodlines'],
       disciplines: ['Fortitude', 'Obfuscate', 'Thanatosis']
     },
     {
-      id: 29, name: 'Toreador',
+      id: 30, name: 'Toreador',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'High Clans'],
       disciplines: ['Auspex', 'Celerity', 'Presence']
     },
     {
-      id: 30, name: 'Tremere',
+      id: 31, name: 'Tremere',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'Low Clans'],
       disciplines: ['Auspex', 'Dominate', 'Thaumaturgy']
     },
     {
-      id: 31, name: 'True Brujah',
+      id: 32, name: 'True Brujah',
       filters: ['All Bloodlines', 'Independent', 'Dark Ages'],
       disciplines: ['Potence', 'Presence', 'Temporis']
     },
     {
-      id: 32, name: 'Tzimisce',
+      id: 33, name: 'Tzimisce',
       filters: ['Thirteen', 'Sabbat', 'All Clans', 'Sabbat (clans only)',
         'Dark Ages', 'High Clans'],
       disciplines: ['Animalism', 'Auspex', 'Vicissitude']
     },
     {
-      id: 33, name: 'Ventrue',
+      id: 34, name: 'Ventrue',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'High Clans'],
       disciplines: ['Dominate', 'Fortitude', 'Presence']
@@ -201,6 +206,7 @@ export class ClanService {
     ['Baali', 'The Baali are a bloodline of vampires associated with demon worship. Because of their affinity with the unholy, the Baali are particularly vulnerable to holy iconography, holy ground and holy water. Some versions present the true purpose of the Baali as keeping demons sleeping by feeding them with carnage and destruction. But most presentations show them as infernalists, using demon worship to gain additional power.'],
     ['Blood Brothers', 'The Blood Brothers are a rare bloodline of the Sabbat, created by Tremere antitribu and Tzimisce kolduns. Designed to function as perfect combat units, Blood Brothers possess a sort of shared consciousness, working exclusively with the \"circle\" of Blood Brothers with whom they share their "hive mind". The members of a circle will often be fleshcrafted by Tzimisce to appear identical, an outward reflection of their lack of individuality.'],
     ['Brujah', 'The Brujah are a major clan in Vampire: The Masquerade. Quick to anger and always passionate in the Modern Nights, they have been regaining their position as a clan of lofty philosophers and activists, and are often pointed to as a clan of unruly rebels and roughnecks that should not be messed with.'],
+    ['Brujah Antitribu', 'The Sabbat-aligned Brujah antitribu are perhaps the ultimate degeneration of the Brujah and potentially what they may become. Violent to the extreme, they often constitute the bulk of the Sabbat\'s cannon fodder and frontline fighters, whether in battle or debate. The Brujah antitribu were one of the first Clan to rebel against the elders during the Anarch Revolt and see themselves as its founders, despite insistence from the sides of the Lasombra and Tzimisce. In recent nights, the Brujah antitribu experienced an upsurge in membership (thanks to reckless Embrace tactics) and consider themselves as one of the main pillars of the sect. The Third Sabbat Civil War and the Pander Movement were backed by Brujah antitribu, who hoped to use the young and inexperienced Caitiff as a way to break the traditional Lasombra-Tzimisce hegemony of the sect.'],
     ['Caitiff', 'Caitiff are vampires with no known clan. It can mean that they were abandoned and therefore do not know their lineage, or that they have no traits of the clan that they were embraced into. Caitiff have no inherent clan disciplines, but they also do not have any clan weakness. They are typically looked down upon by every other type of vampire, whether it\'s with distaste or pity.'],
     ['Cappadocian', 'The Cappadocians, also known as the "Clan of Death". Detached scholars obsessed with the mysteries of death, they are now (theoretically) extinct, having been eliminated through a coup de famille by Augustus Giovanni. Unfortunately for the Giovanni, they may have underestimated what it takes to kill a clan of experts on death. It is said that Cappadocius himself developed their unique discipline, Mortis, which is now known as Necromancy.'],
     ['Children of Osiris', 'The Children of Osiris are a bloodline of vampires who flourished around the second or third millennium BC. The group was founded by Osiris, the \"Resurrected King\". They are known to practice a discipline unlike any other, called Bardo, which allows a vampire to have control over the Beast within. All their members come from other clans, or are Caitiff. Joining their ranks also requires high levels of Humanity.'],
