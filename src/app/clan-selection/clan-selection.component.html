@@ -23,7 +23,7 @@
   </div>
   <div>
     <h1 class="mat-h1">{{clan.name}}</h1>
-    <div>{{clanService.getDescription(clan.name)}}</div>
+    <div [innerText]="clanService.getDescription(clan.name)"></div>
     <b>Disciplines: </b><span>{{clan.disciplines.join(", ")}}</span>
   </div>
 </div>
