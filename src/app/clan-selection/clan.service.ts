@@ -182,24 +182,29 @@ export class ClanService {
       disciplines: ['Auspex', 'Dominate', 'Thaumaturgy']
     },
     {
-      id: 32, name: 'True Brujah',
+      id: 32, name: 'Tremere Antitribu',
+      filters: ['Sabbat', 'All Clans', 'Sabbat (clans only)',],
+      disciplines: ['Auspex', 'Dominate', 'Thaumaturgy']
+    },
+    {
+      id: 33, name: 'True Brujah',
       filters: ['All Bloodlines', 'Independent', 'Dark Ages'],
       disciplines: ['Potence', 'Presence', 'Temporis']
     },
     {
-      id: 33, name: 'Tzimisce',
+      id: 34, name: 'Tzimisce',
       filters: ['Thirteen', 'Sabbat', 'All Clans', 'Sabbat (clans only)',
         'Dark Ages', 'High Clans'],
       disciplines: ['Animalism', 'Auspex', 'Vicissitude']
     },
     {
-      id: 34, name: 'Ventrue',
+      id: 35, name: 'Ventrue',
       filters: ['Thirteen', 'Camarilla', 'All Clans',
         'Camarilla (clans only)', 'Dark Ages', 'High Clans'],
       disciplines: ['Dominate', 'Fortitude', 'Presence']
     },
     {
-      id: 35, name: 'Ventrue Antitribu',
+      id: 36, name: 'Ventrue Antitribu',
       filters: ['Sabbat', 'All Clans', 'Sabbat (clans only)',],
       disciplines: ['Dominate', 'Fortitude', 'Auspex or Presence']
     }
@@ -237,6 +242,7 @@ export class ClanService {
     ['Samedi', 'The Samedi bloodline has a relatively short but immensely curious history within Kindred society. Originating most likely in the Caribbean, the bloodline\'s members all seem to resemble a zombie or a corpse. Unlike the Nosferatu, who merely become disfigured, the body of the Samedi appears to be in a constant state of decay.'],
     ['Toreador', 'The Toreador are a clan of vampires known for being some of the most beautiful, sensual, seductive, emotional and glamorous of the Kindred. They are responsible for the legends of vampires who seduce and entice their prey with beauty, love and sensuality. Due to their inherent clan weakness, although lovely and seductive, the members of this clan are as much prisoners of their artistic vision and sensitivity as they are its beneficiaries.'],
     ['Tremere', 'The Tremere are one of the main bastions of the Camarilla, and have their own strict structure and order hierarchy within their own clan as well. Practitioners of blood magic known as Thaumaturgy, they have the most magical heritage, as they became Kindred through a magical ritual.'],
+    ['Tremere Antitribu', 'The Tremere antitribu are those Tremere that followed Goratrix into exile, named House Goratrix in opposition to their parent Clan. There are rumors that Goratrix\'s flight was part of an orchestrated plan of Tremere, to have an agent in the rival sect, but these did not change the reaction of the Council of Seven: The antitribu found themselves cursed by the main clan.\n\nIn almost every example antitribu are not organised enough, to have gained the full Tremere clan discipline. Tremere included any kindred with a level of Thaumaturgy to be considered as clan Tremere antitribu. These antitribu are hunted in every city, and are to be destroyed, the same as if they had been discovered to have broken their blood bond. Unbondable Tremere do not exist in modern nights, as a result, they all are at least one point bound to the council.'],
     ['True Brujah', 'The True Brujah are a bloodline that are the descendants of the original Antediluvian founder of Clan Brujah and not his diablerist/childe Troile, hence their name. They are noted for their cool, detached behavior, contrary to the main lineage who are known for their short, violent tempers and rebellious attitudes. They control a unique discipline known as Temporis, which gives them the ability to manipulate time itself.'],
     ['Tzimisce', 'The Tzimisce are a clan of scholars and flesh-shapers. The Tzimisce have left the human condition behind gladly, and now focus on transcending the vampiric limitations. Polite, intelligent and inquisitive they seem a stark contrast to the howling Sabbat mobs, however on closer inspection it\'s clear this is a mask hiding something alien and monstrous. Their trademark discipline Vicissitude gives them access to the art of flesh & bone crafting.'],
     ['Ventrue', 'The Ventrue has long been one of the proudest lines of vampires. Its members work hard to maintain a reputation for honor, genteel behavior, and leadership. A sense of noblesse oblige has long pervaded the clan, accompanied by the genuine belief that the Ventrue know what\'s best for everyone. They consider themselves the oldest clan, and see themselves as the enforcers of tradition and the rightful leaders of Kindred society.'],
