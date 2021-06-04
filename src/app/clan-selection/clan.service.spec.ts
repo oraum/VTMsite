@@ -25,8 +25,8 @@ describe('ClanService', () => {
   });
 
   it('should filter clans', () => {
-    expect(service.getFilteredClans('All').length).toBe(36);
-    expect(service.getFilteredClans('Sabbat').length).toBe(9);
+    expect(service.getFilteredClans('All').length).toBe(37);
+    expect(service.getFilteredClans('Sabbat').length).toBe(10);
     expect(service.getFilteredClans('non').length).toBe(0);
   });
 });
