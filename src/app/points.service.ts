@@ -75,6 +75,7 @@ export abstract class PointsService {
     const availablePoints = group.availablePoints;
     const grpPoints = PointsService.pointsToNumber(value.points);
     const diff = points - grpPoints;
+    let count: PointTypeCount = {originalPts: 0, freebiePts: 0}
     if (diff > 0) {
       // increase
       if (this.freebieService.freebieModeActive) {
@@ -86,7 +87,7 @@ export abstract class PointsService {
               return pt;
             }
           });
-          this.freebieService.points = this.freebieService.points - group.freebieCost * diff;
+          count.freebiePts = diff
         } else {
           // tried to spend more points than available - aborting
           return null;
@@ -100,6 +101,7 @@ export abstract class PointsService {
               return pt;
             }
           });
+          count.originalPts = diff
         } else {
           // tried to spend more points than available - aborting
           return null;
@@ -107,60 +109,59 @@ export abstract class PointsService {
       }
     } else {
       // decrease
-      if (this.freebieService.freebieModeActive) {
-        if (value.points[points - 1] !== Point.None) {
-          if (points === grpPoints && points === 1) {
-            // special case to deselect the only point given
-            value.points = this.getDefaultPoints();
-            if (points > (group.minPoints ?? 0)) {
-              this.freebieService.points += (group.freebieCost ?? 0);
-            }
-          } else {
-            let ptsChanged = 0;
-            value.points = value.points.map((pt, index) => {
-              if (index < points || pt === Point.Original) {
-                return pt;
-              } else {
-                if (pt === Point.Freebie) {
-                  ptsChanged += 1;
-                }
-                return Point.None;
-              }
-            });
-            if (ptsChanged > Math.abs(diff)) {
-              ptsChanged = Math.abs(diff);
-            }
-            this.freebieService.points += (ptsChanged) * (group.freebieCost ?? 0);
-          }
-        }
-      } else {
-        if (points >= (group.minPoints ?? 0)) {
-          if (points === grpPoints && points === 1 && (group.minPoints ?? 0) === 0) {
-            // special case to deselect the only point given
-            value.points = this.getDefaultPoints();
-            group.availablePoints += 1;
-          } else {
-            value.points = value.points.map((pt, index) => {
-              if (index < points) {
-                return pt;
-              } else {
-                return Point.None;
-              }
-            });
-          }
+      if (points >= (group.minPoints ?? 0)) {
+        if (points === grpPoints && points === 1 && (group.minPoints ?? 0) === 0) {
+          // special case to deselect the only point given
+          count = this.countType(value.points);
+          value.points = this.getDefaultPoints();
         } else {
-          // tried to set less than base points which should not be possible, use basePoints instead
-          return null;
+          count = this.countType(value.points.slice(points))
+          value.points = value.points.map((pt, index) => {
+            if (index < points) {
+              return pt;
+            } else {
+              return Point.None;
+            }
+          });
         }
+        // decrease
+        count.freebiePts *= -1
+        count.originalPts *= -1
+      } else {
+        // tried to set less than base points which should not be possible, use basePoints instead
+        return null;
       }
     }
-    if (!this.freebieService.freebieModeActive) {
-      group.availablePoints -= diff;
-    }
+    group.availablePoints -= count.originalPts;
+    this.freebieService.points -= (group.freebieCost ?? 0) * count.freebiePts;
     return group;
+  }
+
+  /**
+   * Method to count the different amount of points of each type in an array of points
+   * @param points array to count the types
+   * @return PointTypeCount with counts of each type
+   */
+  countType(points: Point[]): PointTypeCount {
+    const pts = {freebiePts: 0, originalPts: 0}
+    points.forEach(value => {
+      if (value == Point.Original) {
+        pts.originalPts += 1
+      } else if (value == Point.Freebie) {
+        pts.freebiePts += 1
+      }
+    })
+    return pts;
   }
 }
 
+/**
+ * Simple Interface to return freebie and original point count from countType
+ */
+interface PointTypeCount {
+  freebiePts: number;
+  originalPts: number;
+}
 
 export interface NamedPoints {
   name: string;

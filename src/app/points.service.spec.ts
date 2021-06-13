@@ -34,6 +34,14 @@ describe('PointsService', () => {
     expect(PointsService.pointsToNumber(mixPoints)).toEqual(2);
   });
 
+  it('should count the type of points', () => {
+    const mixPoints = [Point.Freebie, Point.None, Point.Original, Point.Freebie, Point.None];
+    const count = service.countType(mixPoints);
+
+    expect(count.originalPts).toEqual(1)
+    expect(count.freebiePts).toEqual(2)
+  });
+
   describe('PointService.pointSelection', () => {
     describe('increase no freebie mode', () => {
       it('should add points and decrease available', () => {
@@ -95,6 +103,16 @@ describe('PointsService', () => {
         expect(PointsService.pointsToNumber(value.points)).toEqual(1);
         expect(value.points).toEqual([Point.Original, Point.None, Point.None]);
       });
+
+      it('should not count freebies to available', () => {
+        const value: NamedPoints = {name: 'test', points: [Point.Original, Point.Original, Point.Freebie]};
+        const grp: NamedPointsGroup = {name: 'testgrp', values: [value], availablePoints: 2, minPoints: 0, freebieCost: 5};
+        service.pointSelection(1, grp, value);
+        expect(grp.availablePoints).toEqual(3);
+        expect(PointsService.pointsToNumber(value.points)).toEqual(1);
+        expect(value.points).toEqual([Point.Original, Point.None, Point.None]);
+        expect(freebiesService.points).toEqual(20);
+      });
     });
     describe('increase freebie mode', () => {
       beforeEach(() => {
@@ -145,15 +163,6 @@ describe('PointsService', () => {
         expect(value.points).toEqual([Point.Original, Point.Freebie, Point.None]);
       });
 
-      it('should not remove original points', () => {
-        const value: NamedPoints = {name: 'test', points: [Point.Original, Point.Original, Point.Original]};
-        const grp: NamedPointsGroup = {name: 'testgrp', values: [value], availablePoints: 0, freebieCost: 5};
-        service.pointSelection(1, grp, value);
-        expect(grp.availablePoints).toEqual(0);
-        expect(freebiesService.points).toEqual(15);
-        expect(PointsService.pointsToNumber(value.points)).toEqual(3);
-        expect(value.points).toEqual([Point.Original, Point.Original, Point.Original]);
-      });
       it('should remove last point ', () => {
         const value: NamedPoints = {name: 'test', points: [Point.Freebie, Point.None, Point.None]};
         const grp: NamedPointsGroup = {name: 'testgrp', values: [value], availablePoints: 2, minPoints: 0, freebieCost: 5};
@@ -194,10 +203,10 @@ describe('PointsService', () => {
         expect(freebiesService.points).toEqual(15);
         service.pointSelection(1, grp, value);
         service.pointSelection(1, grp, value);
-        expect(grp.availablePoints).toEqual(0);
+        expect(grp.availablePoints).toEqual(2);
         expect(freebiesService.points).toEqual(20);
-        expect(PointsService.pointsToNumber(value.points)).toEqual(3);
-        expect(value.points).toEqual([Point.Original, Point.Original, Point.Original, Point.None, Point.None]);
+        expect(PointsService.pointsToNumber(value.points)).toEqual(1);
+        expect(value.points).toEqual([Point.Original, Point.None, Point.None, Point.None, Point.None]);
       });
     });
   });
