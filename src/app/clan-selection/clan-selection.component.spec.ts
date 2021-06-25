@@ -5,6 +5,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {NoopAnimationPlayer} from '@angular/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
 
 describe('ClanSelectionComponent', () => {
   let component: ClanSelectionComponent;
@@ -13,7 +14,7 @@ describe('ClanSelectionComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ClanSelectionComponent ],
-      imports: [MatFormFieldModule, MatSelectModule, NoopAnimationsModule]
+      imports: [MatFormFieldModule, MatSelectModule, NoopAnimationsModule, MatDialogModule]
     })
     .compileComponents();
   });

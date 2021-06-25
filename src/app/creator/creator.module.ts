@@ -28,6 +28,7 @@ import {ImportExportComponent} from '../import-export/import-export.component';
 import {SaveButtonComponent} from '../save-button/save-button.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {ClanSelectionDialogComponent} from '../clan-selection-dialog/clan-selection-dialog.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     WillpowerComponent,
     MeritFlawComponent,
     ImportExportComponent,
-    SaveButtonComponent
+    SaveButtonComponent,
+    ClanSelectionDialogComponent
   ],
   imports: [
     CommonModule,
